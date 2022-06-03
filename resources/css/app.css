@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn {
+    @apply text-gray-900 bg-gray-300 hover:bg-gray-200 active:bg-gray-300 focus:border-gray-300 ring-asta-blue-700 focus:outline-none focus:ring inline-flex items-center px-4 py-2  border border-transparent rounded-md font-semibold text-base  uppercase tracking-widest  disabled:opacity-25 transition ease-in-out duration-150;
+}
+
+.btn-compact {
+    @apply px-2 py-1;
+}
+
+.btn-primary {
+    @apply text-white bg-asta-blue-800 hover:bg-asta-blue-700 active:bg-asta-blue-900 focus:border-asta-blue-900 ring-asta-blue-300;
+}
