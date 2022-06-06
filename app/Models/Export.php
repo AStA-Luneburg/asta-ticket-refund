@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Export extends Model
 {
     use HasFactory;
+
+    public function refunds()
+    {
+        return $this->hasMany(Refund::class);
+    }
 }

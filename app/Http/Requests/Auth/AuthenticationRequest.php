@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Auth;
 
 use App\Models\User;
+use App\Rules\NotLeuphanaID;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
@@ -31,7 +32,7 @@ class AuthenticationRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['required', 'string', 'email', 'ends_with:@stud.leuphana.de'],
+            'email' => ['required', 'string', 'email', 'ends_with:@stud.leuphana.de', new NotLeuphanaID],
             'privacy-check' => ['required', 'accepted'],
         ];
     }

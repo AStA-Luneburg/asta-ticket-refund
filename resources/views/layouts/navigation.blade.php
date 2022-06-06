@@ -1,20 +1,20 @@
-<nav x-data="{ open: false }" class="bg-asta-blue-500 border-b border-blue-900 shadow">
+<nav x-data="{ open: false }" class="bg-astas-blue-500 bg-slate-50 border-sb border-blue-900 pb-6 md:pb-8">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <x-content>
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('welcome') }}" class="block w-auto h-16 py-1">
-                        <x-application-logo class="h-full font-bold text-white fill-current" />
+                        <x-application-logo-colored class="h-full font-bold text-white" />
                     </a>
                 </div>
             </div>
 
             @if (Route::currentRouteName() !== 'welcome')
                 <div class="hidden sm:ml-6 sm:flex flex-col justify-center items-center">
-                    <h1 class="font-bold text-lg text-white">{{ __('app.9-euro-ticket-refund') }}</h1>
-                    <h2 class="font-bold text-base text-slate-300 -mt-1">{{ config('app.asta-name') }}</h2>
+                    <h1 class="font-medium text-xl text-slate-700">{{ __('app.9-euro-ticket-refund') }}</h1>
+                    {{-- <h2 class="font-bold text-base text-slate-600 -mt-1">{{ config('app.asta-name') }}</h2> --}}
                 </div>
             @endif
 
@@ -23,7 +23,7 @@
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             <button
-                                class="flex items-center text-sm font-medium text-slate-200 hover:text-slate-50 hover:border-slate-300 focus:outline-none focus:text-slate-200 focus:border-slate-300 transition duration-150 ease-in-out">
+                                class="flex items-center text-sm font-medium text-slate-600 hover:text-slate-500 hover:border-slate-300 focus:outline-none focus:text-slate-400 focus:border-slate-300 transition duration-150 ease-in-out">
                                 <div>{{ __('app.languages.' . App::getLocale()) }}</div>
 
                                 <div class="ml-1">
@@ -63,7 +63,7 @@
                 </button>
             </div>
         </div>
-    </div>
+    </x-content>
 
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">

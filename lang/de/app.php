@@ -5,6 +5,29 @@ return [
         'de' => 'Deutsch',
         'en' => 'English',
     ],
+    'steps' => [
+        'first' => 'Anleitung',
+        'second' => 'Studierenden-Verifizierung',
+        'third' => 'Bankverbindung angeben'
+    ],
+    'notifications' => [
+        'success' => [
+            'saved' => [
+                'title' => 'Deine Änderungen wurden gespeichert!',
+                'message' => 'Wir haben deinen Antrag mit den neuen Daten aktualisiert.'
+            ],
+            'submitted' => [
+                'title' => 'Wir haben deinen Antrag erhalten!',
+                'message' => 'Dein Antrag ist bei uns eingegangen und wird in Kürze bearbeitet. Du hast jetzt alles getan, was du tun musst!'
+            ],
+            'email-notification' => 'Sobald die Rückerstattungen ausgezahlt werden, wirst du per E-Mail benachrichtigt.',
+            'change-details' => 'Solange der Antrag noch nicht bearbeitet wurde, kannst du deine Bankverbindung jederzeit ändern.',
+        ],
+        'exported' => [
+            'title' => 'Deine Rückerstattung ist abgeschlossen!',
+            'message' => 'Wir haben unsere Bank informiert und das Geld wird demnächst überwiesen.'
+        ]
+    ],
     'student-verification' => 'Studierenden-Verifizierung',
     '9-euro-ticket-refund' => '9€-Ticket Rückerstattung',
     'i_accept_privacy_policy' => 'Die Verarbeitung der Daten erfolgt lediglich zum Zweck der Rückerstattung der Überzahlung des Semestertickets im Rahmen des 9€-Tickets. Ich willige hierfür in die Speicherung und Verarbeitung meiner Daten sowie in die <a href=":link" class="text-asta-red underline hover:opacity-70">Datenschutzbestimmungen</a> des AStA ein.',
@@ -31,19 +54,8 @@ return [
     'iban-placeholder' => 'DEXX XXXX XXXX XXXX XXXX XX',
     'your-bank-details' => 'Deine Bankverbindung',
     'invalid-iban' => 'Die IBAN ist ungültig.',
-    'success' => [
-        'saved' => [
-            'title' => 'Deine Änderungen wurden gespeichert!',
-            'message' => 'Wir haben deinen Antrag mit den neuen Daten aktualisiert.'
-        ],
-        'submitted' => [
-            'title' => 'Wir haben deinen Antrag erhalten!',
-            'message' => 'Dein Antrag ist bei uns eingegangen und wird in Kürze bearbeitet.'
-        ],
-        'email-notification' => 'Sobald die Rückerstattungen ausgezahlt werden, wirst du per E-Mail benachrichtigt.',
-        'change-details' => 'Solange der Antrag noch nicht bearbeitet wurde, kannst du deine Bankverbindung jederzeit ändern.',
-    ],
     'verify-error' => [
+        'not-leuphana-id' => 'Benutze nicht die Email-Adresse, die deine Leuphana-ID enthält. Nutze die, mit deinem Namen.',
         'could-not-verify' => 'Tut uns leid, aber diese E-Mail existiert nicht in unseren Unterlagen',
         'email-not-found' => 'Wir können deshalb nicht verifizieren, dass du Anspruch auf eine Rückerstattung hast. <br> Falls du Fragen hast, oder du eigentlich immatrikuliert bist, kontaktiere bitte den <a class="font-semibold underline" href="mailto::support-mail">AStA Support</a>.',
     ],

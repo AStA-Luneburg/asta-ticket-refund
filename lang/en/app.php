@@ -5,6 +5,11 @@ return [
         'de' => 'Deutsch',
         'en' => 'English',
     ],
+    'steps' => [
+        'first' => 'Welcome',
+        'second' => 'Verify you\'re a student',
+        'third' => 'Enter your bank details'
+    ],
     'student-verification' => 'Student Verification',
     '9-euro-ticket-refund' => '9€-Ticket Refund',
     'i_accept_privacy_policy' => 'I hereby accept the <a href=":link" class="text-asta-red underline hover:opacity-70">privacy policy</a>.',
@@ -31,6 +36,7 @@ return [
     'your-bank-details' => 'Your bank account details',
     'invalid-iban' => 'Invalid IBAN',
     'verify-error' => [
+        'not-leuphana-id' => 'Don\'t use the email address that includes your Leuphana-ID. Use the one including your name.',
         'could-not-verify' => 'We\'re sorry, but we could not find your email address in our records.',
         'email-not-found' => 'Therefore, we could not verify that you\'re eligble for a refund. <br> If you have any questions or you think this is a mistake, please contact <a class="font-semibold underline" href="mailto::support-mail">AStA support</a>.',
     ],

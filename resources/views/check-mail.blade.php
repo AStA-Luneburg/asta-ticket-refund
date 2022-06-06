@@ -26,7 +26,7 @@
                 {{ __('app.back') }}
             </x-button>
 
-            <form action="{{ route('access') }}" method="post" class="w-full">
+            <form action="{{ route('access') }}" method="post" class="w-full sm:w-auto">
                 @csrf
 
                 <input id="email" type="hidden" name="email" value="{{ $email }}" />

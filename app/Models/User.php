@@ -16,9 +16,14 @@ class User extends Authenticatable
     /**
      * Get the phone associated with the user.
      */
-    public function refund()
-    {
+    public function refund() {
         return $this->hasOne(Refund::class, 'email', 'email');
+    }
+
+    public function isAdmin() {
+        $adminEmail = config('app.admin-email', 'lukas.m.f.mateffy@stud.leuphana.de');
+
+        return $this->email === $adminEmail;
     }
 
     /**

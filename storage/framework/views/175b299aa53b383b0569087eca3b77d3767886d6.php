@@ -1,20 +1,28 @@
-<nav x-data="{ open: false }" class="bg-asta-blue-500 border-b border-blue-900 shadow">
+<nav x-data="{ open: false }" class="bg-astas-blue-500 bg-slate-50 border-sb border-blue-900 pb-6 md:pb-8">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.content','data' => []] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('content'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="<?php echo e(route('welcome')); ?>" class="block w-auto h-16 py-1">
                         <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
-<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.application-logo','data' => ['class' => 'h-full font-bold text-white fill-current']] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
-<?php $component->withName('application-logo'); ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.application-logo-colored','data' => ['class' => 'h-full font-bold text-white']] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('application-logo-colored'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['class' => 'h-full font-bold text-white fill-current']); ?>
+<?php $component->withAttributes(['class' => 'h-full font-bold text-white']); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
@@ -27,8 +35,8 @@
 
             <?php if(Route::currentRouteName() !== 'welcome'): ?>
                 <div class="hidden sm:ml-6 sm:flex flex-col justify-center items-center">
-                    <h1 class="font-bold text-lg text-white"><?php echo e(__('app.9-euro-ticket-refund')); ?></h1>
-                    <h2 class="font-bold text-base text-slate-300 -mt-1"><?php echo e(config('app.asta-name')); ?></h2>
+                    <h1 class="font-medium text-xl text-slate-700"><?php echo e(__('app.9-euro-ticket-refund')); ?></h1>
+                    
                 </div>
             <?php endif; ?>
 
@@ -45,7 +53,7 @@
 <?php $component->withAttributes(['align' => 'right','width' => '48']); ?>
                          <?php $__env->slot('trigger', null, []); ?> 
                             <button
-                                class="flex items-center text-sm font-medium text-slate-200 hover:text-slate-50 hover:border-slate-300 focus:outline-none focus:text-slate-200 focus:border-slate-300 transition duration-150 ease-in-out">
+                                class="flex items-center text-sm font-medium text-slate-600 hover:text-slate-500 hover:border-slate-300 focus:outline-none focus:text-slate-400 focus:border-slate-300 transition duration-150 ease-in-out">
                                 <div><?php echo e(__('app.languages.' . App::getLocale())); ?></div>
 
                                 <div class="ml-1">
@@ -118,7 +126,12 @@
                 </button>
             </div>
         </div>
-    </div>
+     <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
+<?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
+<?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
+<?php endif; ?>
 
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">

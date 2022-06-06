@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EmailLoginController;
 use App\Http\Controllers\MyRefundController;
 use Illuminate\Http\Request;
@@ -42,6 +43,11 @@ Route::middleware([InjectLocale::class])->group(function () {
 
     Route::get('/my-refund', [MyRefundController::class, 'index'])->middleware(['auth'])->name('my-refund');
     Route::post('/my-refund', [MyRefundController::class, 'store'])->middleware(['auth'])->name('my-refund.store');
+
+    Route::get('/admin', [AdminController::class, 'index'])->middleware(['auth'])->name('admin');
+    Route::post('/admin/export', [AdminController::class, 'createExport'])->middleware(['auth'])->name('admin.create-export');
+    Route::get('/admin/export/{export}/json', [AdminController::class, 'downloadJSON'])->middleware(['auth'])->name('admin.export.json');
+    Route::get('/admin/export/{export}/csv', [AdminController::class, 'downloadCSV'])->middleware(['auth'])->name('admin.export.csv');
 
     Route::get('/locale/{locale}', function (Request $request, $locale) {
         return redirect($request->query('redirect-url', '/'));
