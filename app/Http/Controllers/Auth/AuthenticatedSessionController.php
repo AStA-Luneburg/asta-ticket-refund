@@ -45,6 +45,7 @@ class AuthenticatedSessionController extends Controller
     {
         Auth::guard('web')->logout();
 
+        $request->session()->forget('verify_email');
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();

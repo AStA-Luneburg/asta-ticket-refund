@@ -18,10 +18,14 @@ return [
     'name' => env('APP_NAME', 'AStA Rückerstattung'),
 
     'university' => env('UNIVERSITY_NAME', 'Leuphana'),
-    'mail-ending' => env('MAIL_ENDING', 'stud.leuphana.de'),
+    'university-full' => env('UNIVERSITY_NAME_FULL', 'Leuphana Universität Lüneburg'),
+    'mail-ending' => env('MAIL_ENDING', '@stud.leuphana.de'),
     'example-mail' => env('EXAMPLE_MAIL', 'max.muster@stud.leuphana.de'),
     'asta-name' => env('ASTA_NAME', 'AStA Universität Lüneburg'),
-    'privacy-url' => 'https://asta-lueneburg.de/',
+    'email-footer' => env('EMAIL_FOOTER', 'Gebäude C9.103<br>Universitätsallee 121335<br>Lüneburg'),
+    'support-mail' => env('SUPPORT_MAIL', 'support@9-euro.asta-lueneburg.de'),
+    'privacy-url' => env('PRIVACY_URL', 'https://example.com/privacy-policy'),
+    'homepage-url' => env('HOMEPAGE_URL', 'https://asta-lueneburg.de'),
 
     /*
     |--------------------------------------------------------------------------

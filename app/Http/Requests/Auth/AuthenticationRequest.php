@@ -31,28 +31,32 @@ class AuthenticationRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['required', 'string', 'email'],
+            'email' => ['required', 'string', 'email', 'ends_with:@stud.leuphana.de'],
+            'privacy-check' => ['required', 'accepted'],
         ];
     }
 
     /**
      * Attempt to authenticate the request's credentials.
      *
-     * @return void
+     * @return \App\Models\User
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function findUser()
+    public function validateUser()
     {
         // $this->ensureIsNotRateLimited();
         $validated = $this->validated();
 
-        $user = User::where('email', $validated['email'])->firstOrFail();
-        Log::debug('User', [ 'user' => $user ]);
+        $user = User::where('email', $validated['email'])->first();
 
         if (!$user) {
             throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
+                'user-not-found' => trans('app.verify-error.email-not-found', [
+                    'email' => $validated['email'],
+                    'support-mail' => config('app.support-mail'),
+                    'university' => config('app.university-full')
+                ]),
             ]);
         }
 

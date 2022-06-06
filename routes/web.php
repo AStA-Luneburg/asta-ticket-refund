@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EmailLoginController;
+use App\Http\Controllers\MyRefundController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App;
@@ -26,22 +27,21 @@ use App\Http\Middleware\InjectLocale;
 // });
 
 Route::middleware([InjectLocale::class])->group(function () {
-    Route::get('/', function (Request $request) {
+    Route::get('/', [EmailLoginController::class, 'index'])->name('index');
 
-        return $request->user()
-            ? redirect('login')
-            : redirect('welcome');
+    Route::get('/mail', function (Request $request) {
+
+        return view('mails.submit-confirmation', []);
     });
 
-    Route::get('/welcome', function () {
-        return view('welcome');
-    })->name('welcome')/*->middleware(['auth'])*/;
+    Route::get('/welcome', [EmailLoginController::class, 'showWelcomePage'])->name('welcome');
+    Route::get('/access', [EmailLoginController::class, 'showAccessPage'])->name('access');
+    Route::post('/access', [EmailLoginController::class, 'sendAuthenticationVerification']);
 
-    Route::get('/access', function () {
-        return view('access');
-    })->name('access')/*->middleware(['auth'])*/;
+    Route::get('/check-mail', [EmailLoginController::class, 'showCheckMailPage'])->name('check-mail');
 
-    Route::post('/access', [EmailLoginController::class, 'authenticateWithEmail']);
+    Route::get('/my-refund', [MyRefundController::class, 'index'])->middleware(['auth'])->name('my-refund');
+    Route::post('/my-refund', [MyRefundController::class, 'store'])->middleware(['auth'])->name('my-refund.store');
 
     Route::get('/locale/{locale}', function (Request $request, $locale) {
         return redirect($request->query('redirect-url', '/'));

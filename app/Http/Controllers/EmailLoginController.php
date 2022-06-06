@@ -3,41 +3,79 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Auth\AuthenticationRequest;
-use App\Mail\LoginCode;
+use App\Mail\VerificationMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use MagicLink\Actions\LoginAction;
+use MagicLink\MagicLink;
 
 class EmailLoginController extends Controller
 {
     /**
-     * Display the login view.
+     * Display the index view.
      *
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function create()
+    public function index(Request $request)
     {
-        return view('login');
+        return $request->user()
+            ? redirect('my-refund')
+            : redirect('welcome');
     }
 
     /**
      * Handle an incoming authentication request.
      *
-     * @param  \App\Http\Requests\Auth\LoginRequest  $request
+     * @param  \App\Http\Requests\Auth\AuthenticationRequest  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function authenticateWithEmail(AuthenticationRequest $request)
+    public function sendAuthenticationVerification(AuthenticationRequest $request)
     {
-        Log::debug('EmailLoginController: authenticateWithEmail: ', [ 'request' => $request->all() ]);
-        $user = $request->findUser();
+        Log::debug('@sendAuthenticationVerification: ', [ 'request' => $request->all() ]);
 
-        if (!$user) {
-            return redirect()->back()->withErrors(['email' => 'Invalid email or password.']);
-        }
+        $user = $request->validateUser();
+        $magicLink = MagicLink::create(new LoginAction($user));
 
         // Send mail with login code
-        Mail::to($user->email)->send(new LoginCode());
+        Mail::to($user->email)->send(new VerificationMail($magicLink->url));
 
-        return redirect(route('verify'));
+        session()->put('verify_email', $user->email);
+
+        return redirect('access');
+    }
+
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \App\Http\Requests\Auth\Request  $request
+     */
+    public function showWelcomePage(Request $request) {
+        if ($request->user()) {
+            return redirect('my-refund');
+        }
+
+        return view('welcome');
+    }
+
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \App\Http\Requests\Auth\Request  $request
+     */
+    public function showAccessPage(Request $request) {
+        if ($request->user()) {
+            return redirect('my-refund');
+        }
+
+        if ($request->input('reset_email')) {
+            session()->forget('verify_email');
+        }
+
+        return session()->has('verify_email')
+            ? view('check-mail', [
+                'email' => session()->get('verify_email')
+              ])
+            : view('access');
     }
 }

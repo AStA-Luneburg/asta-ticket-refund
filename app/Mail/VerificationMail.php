@@ -3,22 +3,23 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class LoginCode extends Mailable
+class VerificationMail extends Mailable
 {
     use Queueable, SerializesModels;
+
+    protected string $link;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(string $link)
     {
-        //
+        $this->link = $link;
     }
 
     /**
@@ -28,8 +29,8 @@ class LoginCode extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.login-code', [
-            'code' => '123456',
+        return $this->view('mails.verification', [
+            'link' => $this->link,
         ]);
     }
 }

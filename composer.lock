@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e45cf78e9041c9af45836ab8fb309ba5",
+    "content-hash": "fccd22890c68a7104754fea2b26a54ed",
     "packages": [
         {
             "name": "brick/math",
@@ -132,6 +132,61 @@
                 "source": "https://github.com/cesargb/laravel-magiclink/tree/v2.12.0"
             },
             "time": "2022-03-03T10:42:15+00:00"
+        },
+        {
+            "name": "cmpayments/iban",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cmpayments/iban.git",
+                "reference": "f3666e58a00f166e43eafc46a9b502ad971ca954"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cmpayments/iban/zipball/f3666e58a00f166e43eafc46a9b502ad971ca954",
+                "reference": "f3666e58a00f166e43eafc46a9b502ad971ca954",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "jakub-onderka/php-parallel-lint": "^0.9.0",
+                "phpunit/phpunit": "^4.7|>=5.0 <5.4",
+                "squizlabs/php_codesniffer": "^2.3"
+            },
+            "suggest": {
+                "ext-bcmath": "Because this library makes use of bcmod function, bcmath extension is recommended for performance.",
+                "phpunit/phpunit": "If PHP Unit is not globally installed on your system the tests will not run, install the PHP Unit package locally to run the tests"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "CMPayments\\": "src/lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bas Peters",
+                    "email": "bp@cm.nl",
+                    "homepage": "https://github.com/baspeters"
+                }
+            ],
+            "description": "IBAN utility library",
+            "homepage": "http://github.com/cmpayments/iban",
+            "keywords": [
+                "IBAN",
+                "validation"
+            ],
+            "support": {
+                "issues": "https://github.com/cmpayments/iban/issues",
+                "source": "https://github.com/cmpayments/iban/tree/master"
+            },
+            "time": "2018-02-19T14:55:51+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
