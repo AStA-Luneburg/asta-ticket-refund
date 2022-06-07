@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 
-class Authenticate extends Middleware
+class AuthenticateAdmin extends Middleware
 {
     /**
      * Get the path the user should be redirected to when they are not authenticated.
@@ -30,14 +30,10 @@ class Authenticate extends Middleware
      */
     protected function authenticate($request, array $guards)
     {
-        if (empty($guards)) {
-            $guards = [null];
-        }
+        $user = $request->user();
 
-        foreach ($guards as $guard) {
-            if ($this->auth->guard($guard)->check()) {
-                return $this->auth->shouldUse($guard);
-            }
+        if ($user !== null && $user->isAdmin()) {
+            return $user;
         }
 
         $this->unauthenticated($request, $guards);

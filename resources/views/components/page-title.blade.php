@@ -1,16 +1,16 @@
 @props(['subtitle', 'step' => 'welcome', 'hide-steps' => false])
 
-<header {{ $attributes->merge(['class' => 'relative bg-slate-50 border-b-2 border-slate-300 pb-8 md:pt-0 mb-8']) }}>
+<header {{ $attributes->merge(['class' => 'relative bg-slate-50 border-b-2 border-slate-300 pb-8 md:pt-0 mb-12']) }}>
     @if (!isset($hideSteps) || !$hideSteps)
         <nav class="hidden sm:block bg-slate-50 border-b-0 border-slate-300 mb-4 md:mb-8">
             <x-content class="relative flex items-stretch flex-col gap-0 md:flex-row md:gap-3 py-2">
-                <x-header-step href="#" index="1" active="{{ $step === 'welcome' ? true : false }}">
+                {{-- <x-header-step :href="route('welcome')" active="{{ $step === 'welcome' ? true : false }}">
                     {{ __('app.steps.first') }}
-                </x-header-step>
-                <x-header-step href="#" index="2" active="{{ $step === 'verification' ? true : false }}">
+                </x-header-step> --}}
+                <x-header-step index="1" active="{{ $step === 'verification' ? true : false }}">
                     {{ __('app.steps.second') }}
                 </x-header-step>
-                <x-header-step href="#" index="3" active="{{ $step === 'banking' ? true : false }}">
+                <x-header-step index="2" active="{{ $step === 'banking' ? true : false }}">
                     {{ __('app.steps.third') }}
                 </x-header-step>
             </x-content>
@@ -26,6 +26,12 @@
 
         @if (isset($content))
             {{ $content }}
+        @endif
+
+        @if (config('app.env') === 'testing')
+            <div class="text-8xl text-asta-red opacity-25 absolute top-0 right-0 pointer-events-none">
+                TESTING
+            </div>
         @endif
     </x-content>
 </header>

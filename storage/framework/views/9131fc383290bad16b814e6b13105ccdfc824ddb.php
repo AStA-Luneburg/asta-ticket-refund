@@ -35,18 +35,16 @@
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
         <p class="text-xl mb-4">
-            Wir haben dir eine E-Mail an <span class="font-medium text-asta-red"><?php echo e($email); ?></span> gesendet.
+            <?php echo __('app.mail-check.text-1', ['email' => $email]); ?>
+
         </p>
         <p class="text-xl mb-4">
-            Bitte öffne diese E-Mail und klicke auf den Link, um deine E-Mail-Adresse zu bestätigen.
-            Falls die E-Mail nicht in deinem Posteingang landet, suche auch im Spam-Ordner. Du kannst auch einen
-            neuen Link anfordern.
+            <?php echo e(__('app.mail-check.text-2')); ?>
+
         </p>
         <p class="text-xl mb-16">
-            Falls du Probleme mit der Verifizierung hast, wende dich gerne an den
-            <a href="mailto:<?php echo e(config('app.support-mail')); ?>"
-                class="text-asta-red font-medium hover:opacity-70 underline">AStA
-                Support</a>!
+            <?php echo __('app.mail-check.text-3', ['support-email' => config('app.support-mail')]); ?>
+
         </p>
 
 
@@ -61,14 +59,14 @@
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
             <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
-<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.button','data' => ['element' => 'link','href' => route('access', ['reset_email' => 1])]] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.button','data' => ['element' => 'link','href' => route('verify', ['reset_email' => 1])]] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('button'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['element' => 'link','href' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('access', ['reset_email' => 1]))]); ?>
+<?php $component->withAttributes(['element' => 'link','href' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('verify', ['reset_email' => 1]))]); ?>
                 <?php echo e(__('app.back')); ?>
 
              <?php echo $__env->renderComponent(); ?>
@@ -78,7 +76,7 @@
 <?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
 <?php endif; ?>
 
-            <form action="<?php echo e(route('access')); ?>" method="post" class="w-full sm:w-auto">
+            <form action="<?php echo e(route('verify')); ?>" method="post" class="w-full sm:w-auto">
                 <?php echo csrf_field(); ?>
 
                 <input id="email" type="hidden" name="email" value="<?php echo e($email); ?>" />

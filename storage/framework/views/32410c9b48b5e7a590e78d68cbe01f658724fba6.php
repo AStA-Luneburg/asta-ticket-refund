@@ -34,13 +34,12 @@
         <div class="pt-4 text-base flex-1 flex-shrink-0">
             <ul class="flex flex-col gap-2">
                 <li><a href="<?php echo e(config('app.impressum-url')); ?>"
-                        class="text-slate-600 hover:text-slate-800 font-medium">Impressum</a></li>
+                        class="text-slate-600 hover:text-slate-800 font-medium"><?php echo e(__('app.footer.imprint')); ?></a></li>
                 <li><a href="<?php echo e(config('app.privacy-url')); ?>"
-                        class="text-slate-600 hover:text-slate-800 font-medium">Datenschutzerklärung</a>
+                        class="text-slate-600 hover:text-slate-800 font-medium"><?php echo e(__('app.footer.privacy-policy')); ?></a>
                 </li>
-                <li><a href="<?php echo e(config('app.faq-url')); ?>" class="text-slate-600 hover:text-slate-800 font-medium">FAQ –
-                        Frequently Asked
-                        Questions</a></li>
+                <li><a href="<?php echo e(config('app.faq-url')); ?>"
+                        class="text-slate-600 hover:text-slate-800 font-medium"><?php echo e(__('app.footer.faq')); ?></a></li>
             </ul>
         </div>
      <?php echo $__env->renderComponent(); ?>
@@ -58,8 +57,7 @@
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
 <?php $component->withAttributes(['class' => 'flex gap-10 text-sm text-slate-500 py-4 hidden md:block']); ?>
-        <p class="md:px-4">Betrieben durch den Allgemeinen Student*innenausschuss der Leuphana
-            Universität Lüneburg.</p>
+        <p class="md:px-4"><?php echo __('app.footer.powered-by', ['homepage' => config('app.homepage-url'), 'university' => config('app.university-full')]); ?></p>
      <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>

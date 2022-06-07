@@ -4,11 +4,11 @@
     </x-page-title>
 
     <x-content>
-        <p class="text-xl mb-5">
-            {{ __('app.enter-email-to-continue') }}
+        <p class="text-xl mb-5 leading-relaxed">
+            {{ __('app.enter-email-to-continue', ['university-full' => config('app.university-full')]) }}
         </p>
 
-        <ul class="font-medium text-lg list-disc ml-10 mb-12">
+        <ul class="font-medium text-lg list-disc ml-10 mb-12 leading-relaxed">
             <li>{{ __('app.no-private-email') }}</li>
             <li>{!! __('app.example-mail-format', ['email' => config('app.mail-ending')]) !!}</li>
         </ul>
@@ -23,7 +23,7 @@
             </div>
         @enderror
 
-        <form action="{{ route('access') }}" method="post" class="w-full" x-data="{ errors: {{ json_encode($errors->first('email') ?? null) }} }">
+        <form action="{{ route('verify') }}" method="post" class="w-full" x-data="{ errors: {{ json_encode($errors->first('email') ?? null) }} }">
             @csrf
 
             <div class="mb-8">

@@ -65,7 +65,7 @@ $iban = $hasBeenSubmitted ? $refund->iban : old('iban');
             <x-auth-validation-errors class="mb-4" :errors="$errors" />
         @endif
 
-        <h3 class="text-2xl font-medium mb-4">
+        <h3 class="text-2xl font-medium mb-6 mt-16">
             {{ __('app.your-bank-details') }}
         </h3>
 

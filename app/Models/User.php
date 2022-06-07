@@ -21,7 +21,7 @@ class User extends Authenticatable
     }
 
     public function isAdmin() {
-        $adminEmail = config('app.admin-email', 'lukas.m.f.mateffy@stud.leuphana.de');
+        $adminEmail = config('app.admin-email');
 
         return $this->email === $adminEmail;
     }

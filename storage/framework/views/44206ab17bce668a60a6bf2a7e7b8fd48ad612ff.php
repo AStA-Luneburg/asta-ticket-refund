@@ -241,7 +241,7 @@ $iban = $hasBeenSubmitted ? $refund->iban : old('iban');
 <?php endif; ?>
         <?php endif; ?>
 
-        <h3 class="text-2xl font-medium mb-4">
+        <h3 class="text-2xl font-medium mb-6 mt-16">
             <?php echo e(__('app.your-bank-details')); ?>
 
         </h3>

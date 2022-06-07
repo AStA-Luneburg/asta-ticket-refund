@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Requests\Auth;
+namespace App\Http\Requests;
 
 use App\Models\User;
+use App\Rules\IsUniversityMail;
 use App\Rules\NotLeuphanaID;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
@@ -32,7 +33,7 @@ class AuthenticationRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['required', 'string', 'email', 'ends_with:@stud.leuphana.de', new NotLeuphanaID],
+            'email' => ['required', 'string', 'email', new IsUniversityMail, new NotLeuphanaID],
             'privacy-check' => ['required', 'accepted'],
         ];
     }

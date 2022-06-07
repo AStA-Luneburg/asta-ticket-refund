@@ -27,6 +27,7 @@ return [
     'impressum-url' => env('IMPRESSUM_URL', 'https://example.com/impressum'),
     'homepage-url' => env('HOMEPAGE_URL', 'https://asta-lueneburg.de'),
     'faq-url' => env('HOMEPAGE_URL', 'https://asta-lueneburg.de'),
+    'admin-email' => env('ADMIN-EMAIL', 'lukas.m.f.mateffy@stud.leuphana.de'),
 
     /*
     |--------------------------------------------------------------------------

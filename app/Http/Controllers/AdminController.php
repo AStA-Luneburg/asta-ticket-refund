@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Export;
 use App\Models\Refund;
 use Illuminate\Http\Request;
+use League\Csv\Writer;
+
 
 class AdminController extends Controller
 {
@@ -14,7 +16,11 @@ class AdminController extends Controller
 
         if ($user->isAdmin()) {
             $exports = Export::all();
-            return view('admin', ['user' => $user, 'exports' => $exports]);
+            $exports->load('refunds');
+
+            $refundCount = Refund::count();
+
+            return view('admin', ['user' => $user, 'exports' => $exports, 'refundCount' => $refundCount]);
         }
 
         return redirect('/');
@@ -34,8 +40,29 @@ class AdminController extends Controller
     }
 
     public function downloadCSV(Request $request, Export $export) {
-        $export->load('refunds');
+        $refunds = $export->refunds;
+        $refunds->load('user');
 
-        return response()->json($export);
+        $records = [];
+
+        foreach ($refunds as $refund) {
+            $records[] = [
+                $refund->email,
+                // $refund->user()->matriculation_number,
+                $refund->name,
+                $refund->iban,
+            ];
+        }
+
+        //load the CSV document from a string
+        $csv = Writer::createFromString();
+
+        //insert the header
+        $csv->insertOne(['Email', 'Name', 'IBAN']);
+
+        //insert all the records
+        $csv->insertAll($records);
+
+        return response($csv->toString())->header('Content-Type', 'text/plain');
     }
 }

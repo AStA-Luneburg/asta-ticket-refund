@@ -475,7 +475,7 @@
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                             <tr>
                                 <td class="content-block powered-by">
-                                    {!! __('app.mails.powered-by', [
+                                    {!! __('app.footer.powered-by', [
     'university' => config('app.university-full'),
     'homepage' => config('app.homepage-url'),
 ]) !!}

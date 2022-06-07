@@ -13,3 +13,11 @@
 .btn-primary {
     @apply text-white bg-asta-blue-800 hover:bg-asta-blue-700 active:bg-asta-blue-900 focus:border-asta-blue-900 ring-asta-blue-300;
 }
+
+.hyphens-auto {
+    hyphens: auto;
+}
+
+.text-justify-hyphens {
+    @apply text-justify hyphens-auto;
+}

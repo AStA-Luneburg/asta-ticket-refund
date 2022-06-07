@@ -1,8 +1,8 @@
-<?php foreach($attributes->onlyProps(['index', 'href', 'active' => false]) as $__key => $__value) {
+<?php foreach($attributes->onlyProps(['index', 'active' => false]) as $__key => $__value) {
     $$__key = $$__key ?? $__value;
 } ?>
-<?php $attributes = $attributes->exceptProps(['index', 'href', 'active' => false]); ?>
-<?php foreach (array_filter((['index', 'href', 'active' => false]), 'is_string', ARRAY_FILTER_USE_KEY) as $__key => $__value) {
+<?php $attributes = $attributes->exceptProps(['index', 'active' => false]); ?>
+<?php foreach (array_filter((['index', 'active' => false]), 'is_string', ARRAY_FILTER_USE_KEY) as $__key => $__value) {
     $$__key = $$__key ?? $__value;
 } ?>
 <?php $__defined_vars = get_defined_vars(); ?>
@@ -12,20 +12,24 @@
 <?php unset($__defined_vars); ?>
 
 <?php if($active): ?>
-    <div href="<?php echo e($href); ?>"
-        class="flex-1 px-2 py-2 rounded-lg flex gap-4 items-center text-sm md:text-base lg:text-lg font-medium text-asta-blue-900">
-        <span
-            class="inline-flex flex-shrink-0 items-center justify-center bg-asta-blue-200 rounded-full h-6 w-6 lg:h-8 lg:w-8 text-slate-50 font-bold text-sm md:text-lg lg:text-xl"><?php echo e($index); ?></span>
+    <a
+        <?php echo e($attributes->merge(['class' => 'flex-1 px-2 py-2 rounded-lg flex gap-4 items-center text-sm md:text-base lg:text-lg font-medium text-asta-blue-900'])); ?>>
+        <?php if(isset($index)): ?>
+            <span
+                class="inline-flex flex-shrink-0 items-center justify-center bg-asta-blue-200 rounded-full h-6 w-6 lg:h-8 lg:w-8 text-slate-50 font-bold text-sm md:text-lg lg:text-xl"><?php echo e($index); ?></span>
+        <?php endif; ?>
         <?php echo e($slot); ?>
 
-    </div>
+    </a>
 <?php else: ?>
-    <div href="<?php echo e($href); ?>"
-        class="flex-1 px-2 py-2 rounded-lg flex gap-4 items-center text-sm md:text-base lg:text-lg font-medium text-asta-blue-900 opacity-40">
-        <span
-            class="inline-flex flex-shrink-0  items-center justify-center bg-asta-blue-200 rounded-full h-6 w-6 lg:h-8 lg:w-8 text-slate-50 font-bold text-sm md:text-lg lg:text-xl"><?php echo e($index); ?></span>
+    <a
+        <?php echo e($attributes->merge(['class' => 'flex-1 px-2 py-2 rounded-lg flex gap-4 items-center text-sm md:text-base lg:text-lg font-medium text-asta-blue-900 opacity-40'])); ?>>
+        <?php if(isset($index)): ?>
+            <span
+                class="inline-flex flex-shrink-0  items-center justify-center bg-asta-blue-200 rounded-full h-6 w-6 lg:h-8 lg:w-8 text-slate-50 font-bold text-sm md:text-lg lg:text-xl"><?php echo e($index); ?></span>
+        <?php endif; ?>
         <?php echo e($slot); ?>
 
-    </div>
+    </a>
 <?php endif; ?>
 <?php /**PATH /Users/mat/Projects/AStA/asta-ticket-refund/resources/views/components/header-step.blade.php ENDPATH**/ ?>
