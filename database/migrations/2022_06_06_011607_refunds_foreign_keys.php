@@ -17,6 +17,10 @@ return new class extends Migration
             $table->foreign('export_id')
                   ->references('id')
                   ->on('exports');
+
+            $table->foreign('matriculation_number')
+                  ->references('matriculation_number')
+                  ->on('eligible_students');
         });
     }
 

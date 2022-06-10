@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AuthenticationRequest;
+use App\Mail\Actions\LoginOrRegisterUser;
 use App\Mail\VerificationMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -22,27 +23,6 @@ class EmailLoginController extends Controller
         return $request->user() !== null
             ? redirect('my-refund')
             : redirect('welcome');
-    }
-
-    /**
-     * Handle an incoming authentication request.
-     *
-     * @param  \App\Http\Requests\AuthenticationRequest  $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function sendAuthenticationVerification(AuthenticationRequest $request)
-    {
-        Log::debug('@sendAuthenticationVerification: ', [ 'request' => $request->all() ]);
-
-        $user = $request->validateUser();
-        $magicLink = MagicLink::create(new LoginAction($user));
-
-        // Send mail with login code
-        Mail::to($user->email)->send(new VerificationMail($magicLink->url));
-
-        session()->put('verify_email', $user->email);
-
-        return redirect('verify');
     }
 
     /**
@@ -70,4 +50,28 @@ class EmailLoginController extends Controller
               ])
             : view('verify');
     }
+
+    /**
+     * Handle an incoming authentication request.
+     *
+     * @param  \App\Http\Requests\AuthenticationRequest  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function sendAuthenticationVerification(AuthenticationRequest $request)
+    {
+        Log::debug('@sendAuthenticationVerification: ', [ 'request' => $request->all() ]);
+
+        $validated = $request->validated();
+        $email = $validated['email'];
+
+        $magicLink = MagicLink::create(new LoginOrRegisterUser($email));
+
+        // Send mail with login code
+        Mail::to('lukas@mateffy.me')->send(new VerificationMail($magicLink->url));
+
+        session()->put('verify_email', $email);
+
+        return redirect('verify');
+    }
+
 }

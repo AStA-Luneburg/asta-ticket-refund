@@ -12,9 +12,9 @@
 <?php unset($__defined_vars); ?>
 
 <?php if(count($errors) > 0): ?>
-    <ul <?php echo e($attributes->merge(['class' => 'mt-3 list-disc list-inside  text-red-600'])); ?>>
+    <ul <?php echo e($attributes->merge(['class' => 'mt-3 text-red-600'])); ?>>
         <?php $__currentLoopData = $errors; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <li><?php echo e($error); ?></li>
+            <li><?php echo $error; ?></li>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </ul>
 <?php endif; ?>

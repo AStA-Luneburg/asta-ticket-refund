@@ -22,13 +22,16 @@ return new class extends Migration
                   ->onUpdate('cascade')
                   ->onDelete('cascade');
 
-            $table->string('name');
-            $table->string('iban');
+            $table->unsignedInteger('matriculation_number')->unique();
+
+            $table->string('name')->nullable();
+            $table->string('iban')->nullable();
 
             $table->unsignedBigInteger('export_id')->nullable();
-                  // CASCADES are not used for a reason!
-                  // let's not have people delete data on accident.
-                  // If an export is deleted, and we 'set null', we can't differenciate between them and new ones
+
+            // CASCADES are not used for a reason!
+            // let's not have people delete data on accident.
+            // If an export is deleted, and we 'set null', we can't differenciate between them and new ones
 
             $table->timestamps();
         });

@@ -13,11 +13,12 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * Get the phone associated with the user.
-     */
     public function refund() {
         return $this->hasOne(Refund::class, 'email', 'email');
+    }
+
+    public function student() {
+        return $this->belongsTo(EligibleStudent::class, 'email', 'email');
     }
 
     public function isAdmin() {

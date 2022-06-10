@@ -33,39 +33,39 @@ class AuthenticationRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['required', 'string', 'email', new IsUniversityMail, new NotLeuphanaID],
+        'email' => ['required', 'string', 'email', /*new IsUniversityMail, new NotLeuphanaID*/],
             'privacy-check' => ['required', 'accepted'],
         ];
     }
 
-    /**
-     * Attempt to authenticate the request's credentials.
-     *
-     * @return \App\Models\User
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
-    public function validateUser()
-    {
-        // $this->ensureIsNotRateLimited();
-        $validated = $this->validated();
+    // /**
+    //  * Attempt to authenticate the request's credentials.
+    //  *
+    //  * @return \App\Models\User
+    //  *
+    //  * @throws \Illuminate\Validation\ValidationException
+    //  */
+    // public function validateUser()
+    // {
+    //     // $this->ensureIsNotRateLimited();
+    //     $validated = $this->validated();
 
-        $user = User::where('email', $validated['email'])->first();
+    //     // $user = User::where('email', $validated['email'])->first();
 
-        if (!$user) {
-            throw ValidationException::withMessages([
-                'user-not-found' => trans('app.verify-error.email-not-found', [
-                    'email' => $validated['email'],
-                    'support-mail' => config('app.support-mail'),
-                    'university' => config('app.university-full')
-                ]),
-            ]);
-        }
+    //     // if (!$user) {
+    //     //     throw ValidationException::withMessages([
+    //     //         'user-not-found' => trans('app.verify-error.email-not-found', [
+    //     //             'email' => $validated['email'],
+    //     //             'support-mail' => config('app.support-mail'),
+    //     //             'university' => config('app.university-full')
+    //     //         ]),
+    //     //     ]);
+    //     // }
 
-        return $user;
+    //     // return $user;
 
-        // RateLimiter::clear($this->throttleKey());
-    }
+    //     // RateLimiter::clear($this->throttleKey());
+    // }
 
     /**
      * Ensure the login request is not rate limited.

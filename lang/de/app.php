@@ -46,7 +46,7 @@ return [
             'text' => 'Wir versuchen so schnell wie möglich, die Rückerstattungen abzuarbeiten und euer Geld zurückerstatten. Sobald wir deinen Antrag bearbeiten und das Geld überweisen, werden wir dich per E-Mail informieren.'
         ]
     ],
-    'check-mail' => [
+    'mail-check' => [
         'text-1' => 'Wir haben dir eine E-Mail an <span class="font-medium text-asta-red">:email</span> gesendet.',
         'text-2' => 'Bitte öffne diese E-Mail und klicke auf den Link, um deine E-Mail-Adresse zu bestätigen. Falls die E-Mail nicht in deinem Posteingang landet, suche auch im Spam-Ordner. Du kannst auch einen neuen Link anfordern.',
         'text-3' => 'Falls du Probleme mit der Verifizierung hast, wende dich gerne an den <a href="mailto::support-mail" class="text-asta-red font-medium hover:opacity-70 underline">AStA Support</a>!',
@@ -69,9 +69,11 @@ return [
     'save' => 'Bankdaten aktualisieren',
     'submit' => 'Antrag einreichen',
     'matriculation-number' => 'Matrikelnummer',
+    'matriculation-number-placeholder' => 'z.B. 123456',
     'your-matriculation-number' => 'Deine Matrikelnummer',
+    'matriculation_number_unchangeable' => 'Deine Matrikelnummer kann jetzt nicht mehr geändert werden. Falls du eine falsche Matrikelnummer angegeben hast, kontaktiere bitte den <a class="font-semibold underline" href="mailto::support-mail">AStA Support</a>.',
     'can-not-be-edited' => 'kann nicht bearbeitet werden',
-    'your-name' => 'Name',
+    'your-name' => 'Name der/des Kontoinhabenden',
     'name-placeholder' => 'z.B. Peter Fox',
     'your-iban' => 'IBAN',
     'iban-placeholder' => 'DEXX XXXX XXXX XXXX XXXX XX',
@@ -81,6 +83,9 @@ return [
         'not-leuphana-id' => 'Benutze nicht die Email-Adresse, die deine Leuphana-ID enthält. Nutze die, mit deinem Namen.',
         'not-university-mail' => 'Bitte nutze eine :university E-Mail-Adresse die mit ":suffix" endet (z.B. :example-mail).',
         'could-not-verify' => 'Tut uns leid, aber diese E-Mail existiert nicht in unseren Unterlagen',
+        'invalid-matriculation-number' => 'Die Matrikelnummer ist ungültig. Sie darf nur aus Zahlen bestehen und ist 5-8 Ziffern lang.',
+        'matriculation-number-not-found' => 'Wir kennen diese Matrikelnummer nicht, weshalb wir dir keine Rückerstattung ausstellen könnnen. Falls du glaubst, das sei ein Fehler, kontaktiere bitte den <a class="font-semibold underline" href="mailto::support-mail">AStA Support</a>.',
+        'matriculation-number-used' => 'Diese Matrikelnummer wurde bereits für einen anderen Antrag verwendet. Falls du glaubst, das sei ein Fehler, kontaktiere bitte den <a class="font-semibold underline" href="mailto::support-mail">AStA Support</a>.',
         'email-not-found' => 'Wir können deshalb nicht verifizieren, dass du Anspruch auf eine Rückerstattung hast. <br> Falls du Fragen hast, oder du eigentlich immatrikuliert bist, kontaktiere bitte den <a class="font-semibold underline" href="mailto::support-mail">AStA Support</a>.',
     ],
     'mails' => [
