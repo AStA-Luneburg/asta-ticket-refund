@@ -78,8 +78,8 @@
 
             <form action="<?php echo e(route('verify')); ?>" method="post" class="w-full sm:w-auto">
                 <?php echo csrf_field(); ?>
-
                 <input id="email" type="hidden" name="email" value="<?php echo e($email); ?>" />
+                <input id="privacy-check" type="hidden" name="privacy-check" value="on" />
                 <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
 <?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.button','data' => ['type' => 'submit','class' => 'btn btn-primary']] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('button'); ?>

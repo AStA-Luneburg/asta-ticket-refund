@@ -93,7 +93,7 @@ return [
         'hello' => 'Hallo!',
         'your-team' => 'Dein AStA Team!',
         'verification' => [
-            'title' => 'Verifizierung',
+            'title' => 'Studierenden-Verifizierung',
             'message' => 'Du hast dich beim <span style="font-weight: 600;">:name</span> verifizieren wollen, um eine Rückerstattung für das 9€-Ticket anzufordern.',
             'verification-button' => 'Bitte klicke nun auf den folgenden Button, um deine Verifizierung abzuschließen:',
             'verification-link' => 'Du kannst stattdessen auch diesen Link in deinen Browser kopieren:',

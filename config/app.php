@@ -16,17 +16,17 @@ return [
     */
 
     'name' => env('APP_NAME', 'AStA Rückerstattung'),
-    'university' => env('UNIVERSITY_NAME', 'Leuphana'),
-    'university-full' => env('UNIVERSITY_NAME_FULL', 'Leuphana Universität Lüneburg'),
-    'mail-ending' => env('MAIL_ENDING', '@stud.leuphana.de'),
-    'example-mail' => env('EXAMPLE_MAIL', 'max.muster@stud.leuphana.de'),
-    'asta-name' => env('ASTA_NAME', 'AStA Universität Lüneburg'),
-    'email-footer' => env('EMAIL_FOOTER', 'Gebäude C9.103<br>Universitätsallee 121335<br>Lüneburg'),
-    'support-mail' => env('SUPPORT_MAIL', 'support@9-euro.asta-lueneburg.de'),
+    'university' => env('UNIVERSITY_NAME', 'Beispiel Universität'),
+    'university-full' => env('UNIVERSITY_NAME_FULL', 'Beispiel Universität Musterstadt'),
+    'mail-ending' => env('MAIL_ENDING', '@students.example.com'),
+    'example-mail' => env('EXAMPLE_MAIL', 'max.muster@students.example.com'),
+    'asta-name' => env('ASTA_NAME', 'AStA Universität Musterstadt'),
+    'email-footer' => env('EMAIL_FOOTER', 'Gebäude A1.001<br>Musterstraße 12345<br>Musterstadt'),
+    'support-mail' => env('SUPPORT_MAIL', 'support@example.com'),
     'privacy-url' => env('PRIVACY_URL', 'https://example.com/privacy-policy'),
     'impressum-url' => env('IMPRESSUM_URL', 'https://example.com/impressum'),
-    'homepage-url' => env('HOMEPAGE_URL', 'https://asta-lueneburg.de'),
-    'faq-url' => env('HOMEPAGE_URL', 'https://asta-lueneburg.de'),
+    'homepage-url' => env('HOMEPAGE_URL', 'https://example.com'),
+    'faq-url' => env('FAQ_URL', 'https://example.com/faq'),
     'admin-email' => env('ADMIN-EMAIL', 'lukas.m.f.mateffy@stud.leuphana.de'),
 
     /*

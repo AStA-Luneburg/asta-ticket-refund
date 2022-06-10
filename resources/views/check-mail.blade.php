@@ -23,8 +23,8 @@
 
             <form action="{{ route('verify') }}" method="post" class="w-full sm:w-auto">
                 @csrf
-
                 <input id="email" type="hidden" name="email" value="{{ $email }}" />
+                <input id="privacy-check" type="hidden" name="privacy-check" value="on" />
                 <x-button type="submit" class="btn btn-primary">
                     {{ __('app.resend-verification') }}
                 </x-button>

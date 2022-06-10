@@ -475,9 +475,9 @@
                             <tr>
                                 <td class="content-block powered-by">
                                     <?php echo __('app.footer.powered-by', [
-    'university' => config('app.university-full'),
-    'homepage' => config('app.homepage-url'),
-]); ?>
+                                            'university' => config('app.university-full'),
+                                            'homepage' => config('app.homepage-url'),
+                                        ]); ?>
 
                                 </td>
                             </tr>

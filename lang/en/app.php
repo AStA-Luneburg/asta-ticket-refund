@@ -47,7 +47,7 @@ return [
         ]
     ],
     'mail-check' => [
-        'text-1' => 'We just sent an email to <span class="font-medium text-asta-red">:email</a>.',
+        'text-1' => 'We just sent an email to <span class="font-medium text-asta-red">:email</span>.',
         'text-2' => 'Please open this mail and click on the link to verify your identity. If you cannot find an email in your inbox, check the spam folder. You can also generate another link below.',
         'text-3' => 'Feel free to contact <a href="mailto::support-mail" class="text-asta-red font-medium hover:opacity-70 underline">AStA support</a> if you have any problems verifying!',
     ],
@@ -93,13 +93,13 @@ return [
         'hello' => 'Hello!',
         'your-team' => 'Your AStA team!',
         'verification' => [
-            'title' => 'Verification',
+            'title' => 'Student verification',
+            'message' => 'You tried to verify yourself with the <span style="font-weight: 600;">:name</span>, in order to apply for a Semesterticket refund due to the German 9€ ticket.',
             'verification-button' => 'Please click the following button to complete your verification:',
             'verification-link' => 'You can also copy & paste this link into your browser instead:',
             'time-limit' => 'This link is valid for 48 hours. After that, you will need to verify again to get a new link.',
             'finish-verification' => 'Complete verification',
             'support' => 'If you have any problems verifying, feel free to contact <a href="mailto::email">AStA support</a>.',
-            'message' => 'You tried to verify yourself with the <span style="font-weight: 600;">:name</span>, in order to apply for a Semesterticket refund due to the German 9€ ticket.',
         ],
         'submit-confirmation' => [
             'title' => 'We\'ve received your refund request!',
