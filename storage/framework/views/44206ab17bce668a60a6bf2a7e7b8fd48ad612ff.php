@@ -2,8 +2,8 @@
 $hasBeenSubmitted = isset($refund) && $refund !== null;
 $hasBeenExported = $hasBeenSubmitted && $refund->export !== null;
 $matriculation_number = $hasBeenSubmitted ? $refund->matriculation_number : old('matriculation_number');
-$name = $hasBeenSubmitted ? $refund->name : old('name');
-$iban = $hasBeenSubmitted ? $refund->iban : old('iban');
+$name = $hasBeenSubmitted ? old('name') ?? $refund->name : old('name');
+$iban = $hasBeenSubmitted ? old('iban') ?? $refund->iban : old('iban');
 ?>
 
 <?php if (isset($component)) { $__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da = $component; } ?>
@@ -200,9 +200,7 @@ $iban = $hasBeenSubmitted ? $refund->iban : old('iban');
                     <?php echo e(__('app.your-matriculation-number')); ?>
 
                 </h3>
-                <p class="mb-8 text-lg leading-relaxed">Wir benötigen deine Matrikelnummer, um deinen Anspruch auf eine
-                    Rückerstattung
-                    verifizieren zu können.</p>
+                <p class="mb-8 text-lg leading-relaxed"><?php echo __('app.why-matriculation'); ?></p>
             <?php endif; ?>
 
             <div class="mb-10">

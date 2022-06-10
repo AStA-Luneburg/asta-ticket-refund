@@ -33,7 +33,7 @@ class AuthenticationRequest extends FormRequest
     public function rules()
     {
         return [
-        'email' => ['required', 'string', 'email', /*new IsUniversityMail, new NotLeuphanaID*/],
+            'email' => ['required', 'string', 'email', new IsUniversityMail, new NotLeuphanaID],
             'privacy-check' => ['required', 'accepted'],
         ];
     }

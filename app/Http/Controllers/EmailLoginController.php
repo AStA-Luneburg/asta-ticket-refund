@@ -67,11 +67,10 @@ class EmailLoginController extends Controller
         $magicLink = MagicLink::create(new LoginOrRegisterUser($email));
 
         // Send mail with login code
-        Mail::to('lukas@mateffy.me')->send(new VerificationMail($magicLink->url));
+        Mail::to($email)->send(new VerificationMail($magicLink->url));
 
         session()->put('verify_email', $email);
 
         return redirect('verify');
     }
-
 }

@@ -67,10 +67,14 @@ return [
     'email-verification' => 'E-Mail Verification',
     'resend-verification' => 'Resend verification email',
     'save' => 'Save',
+    'submit' => 'Submit request',
     'matriculation-number' => 'Matriculation Number',
+    'matriculation-number-placeholder' => 'e.g. 1234567',
     'your-matriculation-number' => 'Your matriculation number',
+    'why-matriculation' => 'We need your matriculation number to verify your eligibility for a refund.',
+    'matriculation_number_unchangeable' => 'Your matriculation number can no longer be changed. If you have entered the wrong matriculation number, please contact the <a class="font-semibold underline" href="mailto::support-mail">AStA support</a>.',
     'can-not-be-edited' => 'can not be edited',
-    'your-name' => 'Name',
+    'your-name' => 'Name of the account holder',
     'name-placeholder' => 'e.g. Michelle Obama',
     'your-iban' => 'IBAN',
     'iban-placeholder' => 'DEXX XXXX XXXX XXXX XXXX XX',
@@ -78,7 +82,11 @@ return [
     'invalid-iban' => 'Invalid IBAN',
     'verify-error' => [
         'not-leuphana-id' => 'Don\'t use the email address that includes your Leuphana-ID. Use the one including your name.',
+        'not-university-mail' => 'Please use a :university e-mail address ending with ":suffix" (e.g. :example-mail).',
         'could-not-verify' => 'We\'re sorry, but we could not find your email address in our records.',
+        'invalid-matriculation-number' => 'This matriculation number is invalid. It may only consist of numbers and is 5-8 digits long.',
+        'matriculation-number-not-found' => 'We do not recognize this matriculation number, which is why we cannot issue you a refund. If you think that this is a mistake, please contact <a class="font-semibold underline" href="mailto::support-mail">AStA support</a>.',
+        'matriculation-number-used' => 'This matriculation number has already been used in another refund application. If you think that this is a mistake, please contact <a class="font-semibold underline" href="mailto::support-mail">AStA support</a>.',
         'email-not-found' => 'Therefore, we could not verify that you\'re eligble for a refund. <br> If you have any questions or you think this is a mistake, please contact <a class="font-semibold underline" href="mailto::support-mail">AStA support</a>.',
     ],
     'mails' => [
@@ -93,7 +101,11 @@ return [
             'support' => 'If you have any problems verifying, feel free to contact <a href="mailto::email">AStA support</a>.',
             'message' => 'You tried to verify yourself with the <span style="font-weight: 600;">:name</span>, in order to apply for a Semesterticket refund due to the German 9€ ticket.',
         ],
-        'submit-confirmation' => []
+        'submit-confirmation' => [
+            'title' => 'We\'ve received your refund request!',
+            'message' => 'You have submitted your refund request for the 9€ ticket to <span style="font-weight: 600;">:name</span>.<br>We have received your request and will get back to you as soon as we transfer the money.',
+            'support' => 'If you have any further questions, feel free to contact <a href="mailto::email">AStA support</a>.',
+        ]
     ],
     'footer' => [
         'imprint' => 'Imprint',

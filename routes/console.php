@@ -15,12 +15,22 @@ use Illuminate\Support\Facades\Artisan;
 */
 
 Artisan::command('prepare', function () {
-    Artisan::call('cache:clear');
-    Artisan::call('view:clear');
-    Artisan::call('route:clear');
-    Artisan::call('config:clear');
+    $this->info('Clearing caches...');
+    $this->call('cache:clear', [], );
+    $this->call('view:clear');
+    $this->call('route:clear');
+    $this->call('config:clear');
+    $this->newLine();
 
-    Artisan::call('view:cache');
-    Artisan::call('route:cache');
-    Artisan::call('config:cache');
+    $this->info('Running migrate...');
+    $this->call('migrate');
+    $this->newLine();
+
+    $this->info('Caching...');
+    $this->call('view:cache');
+    $this->call('route:cache');
+    $this->call('config:cache');
+    $this->newLine();
+
+    $this->info('AStA-Ticket-Refund is ready to be used!');
 })->purpose('Prepare the software for usage');

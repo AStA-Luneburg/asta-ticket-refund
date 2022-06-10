@@ -128,7 +128,6 @@
             font-size: 24px;
             font-weight: 600;
             text-align: center;
-            text-transform: capitalize;
         }
 
         p,
@@ -355,7 +354,6 @@
                 border-color: rgb(14, 56, 88) !important;
             }
         }
-
     </style>
 </head>
 
@@ -460,6 +458,7 @@
                                     <tr>
                                         <td>
                                             <?php echo $__env->yieldContent('content'); ?>
+                                            <br />
                                         </td>
                                     </tr>
                                 </table>

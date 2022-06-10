@@ -128,7 +128,6 @@
             font-size: 24px;
             font-weight: 600;
             text-align: center;
-            text-transform: capitalize;
         }
 
         p,
@@ -355,7 +354,6 @@
                 border-color: rgb(14, 56, 88) !important;
             }
         }
-
     </style>
 </head>
 
@@ -460,6 +458,7 @@
                                     <tr>
                                         <td>
                                             @yield('content')
+                                            <br />
                                         </td>
                                     </tr>
                                 </table>
@@ -476,9 +475,9 @@
                             <tr>
                                 <td class="content-block powered-by">
                                     {!! __('app.footer.powered-by', [
-    'university' => config('app.university-full'),
-    'homepage' => config('app.homepage-url'),
-]) !!}
+                                            'university' => config('app.university-full'),
+                                            'homepage' => config('app.homepage-url'),
+                                        ]) !!}
                                 </td>
                             </tr>
                             <tr>

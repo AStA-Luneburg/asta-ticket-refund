@@ -2,8 +2,8 @@
 $hasBeenSubmitted = isset($refund) && $refund !== null;
 $hasBeenExported = $hasBeenSubmitted && $refund->export !== null;
 $matriculation_number = $hasBeenSubmitted ? $refund->matriculation_number : old('matriculation_number');
-$name = $hasBeenSubmitted ? $refund->name : old('name');
-$iban = $hasBeenSubmitted ? $refund->iban : old('iban');
+$name = $hasBeenSubmitted ? old('name') ?? $refund->name : old('name');
+$iban = $hasBeenSubmitted ? old('iban') ?? $refund->iban : old('iban');
 @endphp
 
 <x-app-layout>
@@ -65,9 +65,7 @@ $iban = $hasBeenSubmitted ? $refund->iban : old('iban');
                 <h3 class="text-2xl font-medium mb-4 mt-16">
                     {{ __('app.your-matriculation-number') }}
                 </h3>
-                <p class="mb-8 text-lg leading-relaxed">Wir benötigen deine Matrikelnummer, um deinen Anspruch auf eine
-                    Rückerstattung
-                    verifizieren zu können.</p>
+                <p class="mb-8 text-lg leading-relaxed">{!! __('app.why-matriculation') !!}</p>
             @endif
 
             <div class="mb-10">
