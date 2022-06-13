@@ -30,14 +30,14 @@ return [
     ],
     'welcome' => [
         'welcome-1' => 'Seit Juni 2022 gibt es für 3 Monate das 9-Euro-Ticket, mit dem der ÖPNV in ganz Deutschland genutzt werden kann. <strong class="font-semibold">Da ihr als Studierende ein Semesterticket habt, braucht ihr kein 9-Euro-Ticket erwerben!</strong>',
-        'welcome-2' => 'Ihr könnt für die Monate Juni, Juli und August euer Semesterticket im gesamten deutschen ÖPNV nutzen.<br>Da ihr aber für euer Semesterticket mehr als 9 Euro pro Monat zahlt, bekommt ihr jetzt Geld vom AStA zurück!',
+        'welcome-2' => 'Ihr könnt für die Monate Juni, Juli und August euer Semesterticket im gesamten deutschen ÖPNV nutzen.<br>Da ihr für euer Semesterticket aber mehr als 9 Euro pro Monat zahlt, bekommt ihr jetzt Geld vom AStA zurück!',
         'how-does-it-work' => 'Wie funktioniert das?',
         'step-1' => [
             'title' => 'Verifiziere, dass du im SoSe 2022 an der :university immatrikuliert bist/warst',
             'text' => 'In dem wir eine E-Mail an deine :university-Email senden, können wir dich identifizieren und sicher stellen, dass du auch wirklich du bist. Diese E-Mail enthält einen Link, mit dem du dich anmelden und deinen Antrag ausfüllen kannst.'
         ],
         'step-2' => [
-            'title' => 'Gebe eine Bankverbindung an',
+            'title' => 'Gib eine Bankverbindung an',
             'text-1' => 'Wir werden die Rückerstattung auf das Konto überweisen, das du in deinem Antrag angibst. Wir brauchen dafür nur deinen Namen und deine IBAN.',
             'text-2' => 'Solange dein Antrag noch nicht bearbeitet wurde, kannst du deine Kontodaten jederzeit ändern, indem du dich über dieses Formular erneut anmeldest.'
         ],
@@ -59,7 +59,7 @@ return [
     'email' => ':university E-Mail',
     'your-email' => 'Deine :university E-Mail',
     'enter-email-to-continue' => 'Um fortzufahren, musst du nun deine Studierenden-Email angeben, damit wir verifizieren können, dass du an der :university-full studierst.',
-    'no-private-email' => 'Gebe hier nicht deine private E-Mail Adresse an (z.B. Gmail).',
+    'no-private-email' => 'Gib hier nicht deine private E-Mail Adresse an (z.B. Gmail).',
     'example-mail-format' => 'Die E-Mail sollte mit <span class="font-bold">:email</span> enden.',
     'email-placeholder' => 'z.B. :example-mail',
     'my-refund' => 'Meine Rückerstattung',
