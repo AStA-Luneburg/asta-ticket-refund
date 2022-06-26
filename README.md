@@ -1,8 +1,8 @@
-# 9€-Ticket Rückerstattungs Web-App <img src="resources/readme/asta.svg" align="right">
+# Web-App für 9€-Ticket Rückerstattungen <img src="resources/readme/asta.svg" align="right">
 
 > Veröffentlicht unter MIT-Lizenz, Copyright © 2022 [Lukas Mateffy](https://mateffy.me)
 
-Software um Anträge auf Semesterticket-Rückerstattungen aufgrund des 9€-Tickets anzunehmen und zu verwalten. Erstellt für den [AStA der Universität Lüneburg](https://asta-lueneburg.de).
+Software um Anträge auf Semesterticket-Rückerstattungen aufgrund des 9€-Tickets anzunehmen und zu verarbeiten. Erstellt für den [AStA der Universität Lüneburg](https://asta-lueneburg.de).
 
 <details>
   <summary>Screenshots</summary>
