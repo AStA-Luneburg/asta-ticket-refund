@@ -1,4 +1,4 @@
-<img src="resources/readme/screenshot_1.png" style="float: right; max-width: 300px;" />
+<img src="resources/readme/screenshot_1.png" align="right" />
 
 # AStA 9€-Ticket Rückerstattungs-Software
 
