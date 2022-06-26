@@ -1,8 +1,8 @@
-<img src="resources/readme/screenshot_1.png" align="right" />
-
 # AStA 9€-Ticket Rückerstattungs-Software
 
 Software des AStA der Universität Lüneburg, um Anträge auf Semesterticket-Rückerstattungen wegen des 9€-Tickets anzunehmen und zu verwalten.
+
+<img src="resources/readme/screenshot_1.png" align="right" />
 
 <br />
 
