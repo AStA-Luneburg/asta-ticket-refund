@@ -14,10 +14,6 @@ class Refund extends Model
         return $this->belongsTo(User::class, 'matriculation_number', 'matriculation_number');
     }
 
-    public function student() {
-        return $this->belongsTo(EligibleStudent::class, 'matriculation_number', 'matriculation_number');
-    }
-
     public function export()
     {
         return $this->belongsTo(Export::class, 'export_id', 'id');

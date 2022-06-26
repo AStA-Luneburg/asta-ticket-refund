@@ -43,8 +43,8 @@ class AdminController extends Controller
 
         foreach ($refunds as $refund) {
             $records[] = [
-                'matriculation_number' => $refund->user()->matriculation_number,
-                'email' => $refund->user()->email,
+                'matriculation_number' => $refund->user->matriculation_number,
+                'email' => $refund->user->email,
                 'name' => $refund->name,
                 'iban' => $refund->iban,
             ];
@@ -61,8 +61,8 @@ class AdminController extends Controller
 
         foreach ($refunds as $refund) {
             $records[] = [
-                $refund->user()->matriculation_number,
-                $refund->user()->email,
+                $refund->user->matriculation_number,
+                $refund->user->email,
                 $refund->name,
                 $refund->iban,
             ];
