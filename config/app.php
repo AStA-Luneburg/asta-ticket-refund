@@ -16,7 +16,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'AStA Rückerstattung'),
-    'admin-email' => env('ADMIN-EMAIL', 'admin@example.com'),
+    'admin-email' => env('ADMIN_EMAIL', 'admin@example.com'),
     'asta-name' => env('ASTA_NAME', 'AStA Universität Musterstadt'),
     'university' => env('UNIVERSITY_NAME', 'Beispiel Universität'),
     'university-full' => env('UNIVERSITY_NAME_FULL', 'Beispiel Universität Musterstadt'),

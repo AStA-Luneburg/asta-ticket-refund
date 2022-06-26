@@ -115,8 +115,8 @@ MAIL_HOST=smtp.example.com
 # MAIL_PORT=1025
 MAIL_USERNAME=username
 MAIL_PASSWORD=password
-MAIL_FROM_ADDRESS="{SUPPORT_MAIL}"
-MAIL_FROM_NAME="{ASTA_NAME}"
+MAIL_FROM_ADDRESS="support@example.com"
+MAIL_FROM_NAME="AStA Universität Musterstadt"
 
 # Datenbank Optionen
 DB_CONNECTION=mysql
