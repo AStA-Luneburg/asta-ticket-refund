@@ -1,4 +1,4 @@
-# Web-App für 9€-Ticket Rückerstattungen <img src="resources/readme/asta.svg" align="right">
+# <img src="resources/readme/asta.svg" align="right"> Web-App für 9€-Ticket Rückerstattungen
 
 > Veröffentlicht unter MIT-Lizenz, Copyright © 2022 [Lukas Mateffy](https://mateffy.me)
 
