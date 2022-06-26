@@ -1,11 +1,10 @@
-# 9€-Ticket Rückerstattungs-Software <img src="resources/readme/asta.svg" align="right">
+# 9€-Ticket Rückerstattungs-Software
 
 > Veröffentlicht unter MIT-Lizenz, Copyright © 2022 [Lukas Mateffy](https://mateffy.me)
 
-<p>
 Software um Anträge auf Semesterticket-Rückerstattungen aufgrund des 9€-Tickets anzunehmen und zu verwalten. Erstellt für den [AStA der Universität Lüneburg](https://asta-lueneburg.de).
 
-</p>
+<img src="resources/readme/asta.svg" align="right">
 
 <details>
   <summary>Screenshots</summary>
