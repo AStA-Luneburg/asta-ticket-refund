@@ -1,4 +1,4 @@
-# 9€-Ticket Rückerstattungs-Software <img src="resources/readme/asta.svg" align="right">
+# 9€-Ticket Rückerstattungs Web-App <img src="resources/readme/asta.svg" align="right">
 
 > Veröffentlicht unter MIT-Lizenz, Copyright © 2022 [Lukas Mateffy](https://mateffy.me)
 
@@ -17,6 +17,7 @@ Software um Anträge auf Semesterticket-Rückerstattungen aufgrund des 9€-Tick
 -   [Features](#features)
 -   [Installation](#installation)
 -   [Anpassung an deine Universität](#anpassung-an-deine-universität)
+-   [Admin Dashboard](#admin-dashboard)
 
 <br />
 
@@ -47,6 +48,8 @@ Software um Anträge auf Semesterticket-Rückerstattungen aufgrund des 9€-Tick
 -   Die Software ist mit PHP und MySQL aufgebaut
 -   Dadurch ist einfache Datenbankeinrichtung via phpMyAdmin möglich (je nach Webhost)
 -   Nutzt das [Laravel Framework](https://laravel.com), ist damit leicht modifizierbar
+
+<br />
 
 ### Weitere Features
 
@@ -195,7 +198,7 @@ Die Software ist auf Laravel aufgebaut und nutzt dessen best-practices. Daher ka
 
 <br /><br /><br />
 
-## Admin/Export Interface
+## Admin Dashboard
 
 Du kannst die Admin-UI über diese URL erreichen: `9-euro.example.com/admin`
 
