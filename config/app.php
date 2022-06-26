@@ -16,18 +16,18 @@ return [
     */
 
     'name' => env('APP_NAME', 'AStA Rückerstattung'),
+    'admin-email' => env('ADMIN-EMAIL', 'admin@example.com'),
+    'asta-name' => env('ASTA_NAME', 'AStA Universität Musterstadt'),
     'university' => env('UNIVERSITY_NAME', 'Beispiel Universität'),
     'university-full' => env('UNIVERSITY_NAME_FULL', 'Beispiel Universität Musterstadt'),
     'mail-ending' => env('MAIL_ENDING', '@students.example.com'),
     'example-mail' => env('EXAMPLE_MAIL', 'max.muster@students.example.com'),
-    'asta-name' => env('ASTA_NAME', 'AStA Universität Musterstadt'),
-    'email-footer' => env('EMAIL_FOOTER', 'Gebäude A1.001<br>Musterstraße 12345<br>Musterstadt'),
     'support-mail' => env('SUPPORT_MAIL', 'support@example.com'),
+    'homepage-url' => env('HOMEPAGE_URL', 'https://example.com'),
     'privacy-url' => env('PRIVACY_URL', 'https://example.com/privacy-policy'),
     'impressum-url' => env('IMPRESSUM_URL', 'https://example.com/impressum'),
-    'homepage-url' => env('HOMEPAGE_URL', 'https://example.com'),
     'faq-url' => env('FAQ_URL', 'https://example.com/faq'),
-    'admin-email' => env('ADMIN-EMAIL', 'lukas.m.f.mateffy@stud.leuphana.de'),
+    'footer-address' => env('FOOTER_ADDRESS', 'Gebäude A1.001<br>Musterstraße 12345<br>Musterstadt'),
 
     /*
     |--------------------------------------------------------------------------

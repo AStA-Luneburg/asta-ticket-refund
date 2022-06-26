@@ -26,10 +26,8 @@
 <?php endif; ?>
         </figure>
         <p class="pt-4 min-w-lg flex-1 text-slate-500 text-sm font-medium">
-            <strong>Allgemeiner Student*innenausschuss</strong><br>
-            Gebäude C9.103<br>
-            Universitätsallee 1<br>
-            21335 Lüneburg
+            <?php echo config('app.footer-address'); ?>
+
         </p>
         <div class="pt-4 text-base flex-1 flex-shrink-0">
             <ul class="flex flex-col gap-2">

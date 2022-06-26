@@ -475,15 +475,15 @@
                             <tr>
                                 <td class="content-block powered-by">
                                     {!! __('app.footer.powered-by', [
-                                            'university' => config('app.university-full'),
-                                            'homepage' => config('app.homepage-url'),
-                                        ]) !!}
+    'university' => config('app.university-full'),
+    'homepage' => config('app.homepage-url'),
+]) !!}
                                 </td>
                             </tr>
                             <tr>
                                 <td class="content-block">
                                     <span class="apple-link">
-                                        {!! config('app.email-footer') !!}</span>
+                                        {!! config('app.footer-address') !!}</span>
                                 </td>
                             </tr>
                         </table>

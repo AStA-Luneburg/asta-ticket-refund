@@ -475,16 +475,16 @@
                             <tr>
                                 <td class="content-block powered-by">
                                     <?php echo __('app.footer.powered-by', [
-                                            'university' => config('app.university-full'),
-                                            'homepage' => config('app.homepage-url'),
-                                        ]); ?>
+    'university' => config('app.university-full'),
+    'homepage' => config('app.homepage-url'),
+]); ?>
 
                                 </td>
                             </tr>
                             <tr>
                                 <td class="content-block">
                                     <span class="apple-link">
-                                        <?php echo config('app.email-footer'); ?></span>
+                                        <?php echo config('app.footer-address'); ?></span>
                                 </td>
                             </tr>
                         </table>

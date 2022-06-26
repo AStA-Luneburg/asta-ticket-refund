@@ -18,7 +18,6 @@ return new class extends Migration
             $table->unsignedInteger('matriculation_number')->unique();
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamps();
         });
     }
 
