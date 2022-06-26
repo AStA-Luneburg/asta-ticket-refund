@@ -41,11 +41,10 @@ class MyRefundController extends Controller
         $isFirstSave = $user->refund === null;
 
         Refund::updateOrCreate(
-            ['email' => $user->email],
+            ['matriculation_number' => $user->matriculation_number],
             [
                 'name' => $validated['name'],
                 'iban' => $validated['iban'],
-                'matriculation_number' => $validated['matriculation_number'],
                 'updated_at' => now(), // We set updated_at manually and update it even when values haven't changed
             ]
         );

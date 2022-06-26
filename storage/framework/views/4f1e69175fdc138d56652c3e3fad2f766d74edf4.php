@@ -37,7 +37,7 @@ switch ($color) {
         <h3 class="text-xl font-medium"><?php echo e($title); ?></h3>
 
         <?php if(isset($subtitle) && $subtitle !== null): ?>
-            <span class="text-base text-center font-medium"><?php echo e($subtitle); ?></span>
+            <span class="text-base text-right font-medium"><?php echo e($subtitle); ?></span>
         <?php endif; ?>
     </header>
 

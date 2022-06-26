@@ -1,7 +1,10 @@
 <?php $__env->startSection('content'); ?>
     <h1><?php echo e(__('app.mails.submit-confirmation.title')); ?></h1>
     <p><?php echo e(__('app.mails.hello')); ?></p>
-    <p><?php echo __('app.mails.submit-confirmation.message', ['name' => config('app.asta-name')]); ?></p>
+    <p>
+        <?php echo __('app.mails.submit-confirmation.message', ['name' => config('app.asta-name')]); ?>
+
+    </p>
     <p>
         <?php echo __('app.mails.submit-confirmation.support', ['email' => config('app.support-mail')]); ?>
 

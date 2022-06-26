@@ -15,13 +15,6 @@ return new class extends Migration
     {
         Schema::create('refunds', function (Blueprint $table) {
             $table->id();
-            $table->string('email')->unique();
-            $table->foreign('email')
-                  ->references('email')
-                  ->on('users')
-                  ->onUpdate('cascade')
-                  ->onDelete('cascade');
-
             $table->unsignedInteger('matriculation_number')->unique();
 
             $table->string('name')->nullable();

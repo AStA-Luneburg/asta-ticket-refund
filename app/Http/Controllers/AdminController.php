@@ -14,16 +14,18 @@ class AdminController extends Controller
     {
         $user = $request->user();
 
-        if ($user->isAdmin()) {
-            $exports = Export::all();
-            $exports->load('refunds');
+        $exports = Export::all();
+        $exports->load('refunds');
 
-            $refundCount = Refund::count();
+        $refundCount = Refund::where('export_id', '=', null)->count();
+        $totalRefundCount = Refund::where('export_id', '!=', null)->count();
 
-            return view('admin', ['user' => $user, 'exports' => $exports, 'refundCount' => $refundCount]);
-        }
-
-        return redirect('/');
+        return view('admin', [
+            'user' => $user,
+            'exports' => $exports,
+            'refundCount' => $refundCount,
+            'totalRefundCount' => $totalRefundCount
+        ]);
     }
 
     public function createExport(Request $request) {
@@ -34,9 +36,21 @@ class AdminController extends Controller
     }
 
     public function downloadJSON(Request $request, Export $export) {
-        $export->load('refunds');
+        $refunds = $export->refunds;
+        $refunds->load('user');
 
-        return response()->json($export);
+        $records = [];
+
+        foreach ($refunds as $refund) {
+            $records[] = [
+                'matriculation_number' => $refund->user()->matriculation_number,
+                'email' => $refund->user()->email,
+                'name' => $refund->name,
+                'iban' => $refund->iban,
+            ];
+        }
+
+        return response()->json($records);
     }
 
     public function downloadCSV(Request $request, Export $export) {
@@ -47,8 +61,8 @@ class AdminController extends Controller
 
         foreach ($refunds as $refund) {
             $records[] = [
-                $refund->email,
-                // $refund->user()->matriculation_number,
+                $refund->user()->matriculation_number,
+                $refund->user()->email,
                 $refund->name,
                 $refund->iban,
             ];
@@ -58,7 +72,7 @@ class AdminController extends Controller
         $csv = Writer::createFromString();
 
         //insert the header
-        $csv->insertOne(['Email', 'Name', 'IBAN']);
+        $csv->insertOne(['Matrikelnummer', 'Email', 'Name', 'IBAN']);
 
         //insert all the records
         $csv->insertAll($records);

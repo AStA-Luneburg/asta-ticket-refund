@@ -20,7 +20,7 @@ return new class extends Migration
 
             $table->foreign('matriculation_number')
                   ->references('matriculation_number')
-                  ->on('eligible_students');
+                  ->on('users');
         });
     }
 

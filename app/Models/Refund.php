@@ -11,7 +11,7 @@ class Refund extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'email', 'email');
+        return $this->belongsTo(User::class, 'matriculation_number', 'matriculation_number');
     }
 
     public function student() {

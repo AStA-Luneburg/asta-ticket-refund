@@ -1,7 +1,6 @@
 @php
 $hasBeenSubmitted = isset($refund) && $refund !== null;
 $hasBeenExported = $hasBeenSubmitted && $refund->export !== null;
-$matriculation_number = $hasBeenSubmitted ? $refund->matriculation_number : old('matriculation_number');
 $name = $hasBeenSubmitted ? old('name') ?? $refund->name : old('name');
 $iban = $hasBeenSubmitted ? old('iban') ?? $refund->iban : old('iban');
 @endphp
@@ -61,30 +60,31 @@ $iban = $hasBeenSubmitted ? old('iban') ?? $refund->iban : old('iban');
         <form action="{{ route('my-refund.store') }}" method="post" class="w-full">
             @csrf
 
-            @if (!$hasBeenSubmitted)
+            {{-- @if (!$hasBeenSubmitted)
                 <h3 class="text-2xl font-medium mb-4 mt-16">
                     {{ __('app.your-matriculation-number') }}
                 </h3>
                 <p class="mb-8 text-lg leading-relaxed">{!! __('app.why-matriculation') !!}</p>
-            @endif
+            @endif --}}
 
             <div class="mb-10">
-                <x-label for="matriculation_number" value="{{ __('app.matriculation-number') }}" />
+                <x-label for="matriculation_number" value="{{ __('app.your-matriculation-number') }}" />
 
-                @if ($hasBeenSubmitted && !$hasBeenExported)
-                    <input type="hidden" name="matriculation_number" value="{{ $matriculation_number }}">
-                    <x-disabled-input id="matriculation_number" name="matriculation_number"
-                        value="{{ $matriculation_number }} – {{ $refund->student->name }}"
-                        class="mb-4" />
-                    <span class="text-slate-600">{!! __('app.matriculation_number_unchangeable', ['support-mail' => config('app.support-mail')]) !!}</span>
+                <input type="hidden" name="matriculation_number" value="{{ $user->matriculation_number }}">
+                <x-disabled-input id="matriculation_number_fake" name="matriculation_number_fake"
+                    value="{{ $user->matriculation_number }} – {{ $user->name }}" class="mb-4" />
+                {{-- <span class="text-slate-600">{!! __('app.matriculation_number_unchangeable', ['support-mail' => config('app.support-mail')]) !!}</span> --}}
+
+                {{-- @if ($hasBeenSubmitted && !$hasBeenExported)
+
                 @else
                     <x-input id="matriculation_number" min="4" max="8"
                         class="{{ $errors->get('matriculation_number') ? '!ring-red-600 !border-red-600' : '' }}"
                         type="text" name="matriculation_number" value="{{ $matriculation_number }}" required
                         autofocus placeholder="{{ __('app.matriculation-number-placeholder') }}" />
-                @endif
+                @endif --}}
 
-                <x-auth-validation-errors class="mb-4" :errors="$errors->get('matriculation_number')" />
+                {{-- <x-auth-validation-errors class="mb-4" :errors="$errors->get('matriculation_number')" /> --}}
             </div>
 
             <h3 class="text-2xl font-medium mb-6 mt-16">

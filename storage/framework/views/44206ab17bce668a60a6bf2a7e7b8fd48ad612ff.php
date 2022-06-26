@@ -1,7 +1,6 @@
 <?php
 $hasBeenSubmitted = isset($refund) && $refund !== null;
 $hasBeenExported = $hasBeenSubmitted && $refund->export !== null;
-$matriculation_number = $hasBeenSubmitted ? $refund->matriculation_number : old('matriculation_number');
 $name = $hasBeenSubmitted ? old('name') ?? $refund->name : old('name');
 $iban = $hasBeenSubmitted ? old('iban') ?? $refund->iban : old('iban');
 ?>
@@ -195,24 +194,18 @@ $iban = $hasBeenSubmitted ? old('iban') ?? $refund->iban : old('iban');
         <form action="<?php echo e(route('my-refund.store')); ?>" method="post" class="w-full">
             <?php echo csrf_field(); ?>
 
-            <?php if(!$hasBeenSubmitted): ?>
-                <h3 class="text-2xl font-medium mb-4 mt-16">
-                    <?php echo e(__('app.your-matriculation-number')); ?>
-
-                </h3>
-                <p class="mb-8 text-lg leading-relaxed"><?php echo __('app.why-matriculation'); ?></p>
-            <?php endif; ?>
+            
 
             <div class="mb-10">
                 <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
-<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.label','data' => ['for' => 'matriculation_number','value' => ''.e(__('app.matriculation-number')).'']] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.label','data' => ['for' => 'matriculation_number','value' => ''.e(__('app.your-matriculation-number')).'']] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('label'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['for' => 'matriculation_number','value' => ''.e(__('app.matriculation-number')).'']); ?>
+<?php $component->withAttributes(['for' => 'matriculation_number','value' => ''.e(__('app.your-matriculation-number')).'']); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
@@ -220,57 +213,27 @@ $iban = $hasBeenSubmitted ? old('iban') ?? $refund->iban : old('iban');
 <?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
 <?php endif; ?>
 
-                <?php if($hasBeenSubmitted && !$hasBeenExported): ?>
-                    <input type="hidden" name="matriculation_number" value="<?php echo e($matriculation_number); ?>">
-                    <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
-<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.disabled-input','data' => ['id' => 'matriculation_number','name' => 'matriculation_number','value' => ''.e($matriculation_number).' – '.e($refund->student->name).'','class' => 'mb-4']] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
+                <input type="hidden" name="matriculation_number" value="<?php echo e($user->matriculation_number); ?>">
+                <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.disabled-input','data' => ['id' => 'matriculation_number_fake','name' => 'matriculation_number_fake','value' => ''.e($user->matriculation_number).' – '.e($user->name).'','class' => 'mb-4']] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('disabled-input'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['id' => 'matriculation_number','name' => 'matriculation_number','value' => ''.e($matriculation_number).' – '.e($refund->student->name).'','class' => 'mb-4']); ?>
+<?php $component->withAttributes(['id' => 'matriculation_number_fake','name' => 'matriculation_number_fake','value' => ''.e($user->matriculation_number).' – '.e($user->name).'','class' => 'mb-4']); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
 <?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
 <?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
 <?php endif; ?>
-                    <span class="text-slate-600"><?php echo __('app.matriculation_number_unchangeable', ['support-mail' => config('app.support-mail')]); ?></span>
-                <?php else: ?>
-                    <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
-<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.input','data' => ['id' => 'matriculation_number','min' => '4','max' => '8','class' => ''.e($errors->get('matriculation_number') ? '!ring-red-600 !border-red-600' : '').'','type' => 'text','name' => 'matriculation_number','value' => ''.e($matriculation_number).'','required' => true,'autofocus' => true,'placeholder' => ''.e(__('app.matriculation-number-placeholder')).'']] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
-<?php $component->withName('input'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
-<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['id' => 'matriculation_number','min' => '4','max' => '8','class' => ''.e($errors->get('matriculation_number') ? '!ring-red-600 !border-red-600' : '').'','type' => 'text','name' => 'matriculation_number','value' => ''.e($matriculation_number).'','required' => true,'autofocus' => true,'placeholder' => ''.e(__('app.matriculation-number-placeholder')).'']); ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
-<?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
-<?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
-<?php endif; ?>
-                <?php endif; ?>
+                
 
-                <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
-<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.auth-validation-errors','data' => ['class' => 'mb-4','errors' => $errors->get('matriculation_number')]] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
-<?php $component->withName('auth-validation-errors'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
-<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['class' => 'mb-4','errors' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($errors->get('matriculation_number'))]); ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
-<?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
-<?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
-<?php endif; ?>
+                
+
+                
             </div>
 
             <h3 class="text-2xl font-medium mb-6 mt-16">

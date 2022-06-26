@@ -38,67 +38,30 @@ class AuthenticationRequest extends FormRequest
         ];
     }
 
-    // /**
-    //  * Attempt to authenticate the request's credentials.
-    //  *
-    //  * @return \App\Models\User
-    //  *
-    //  * @throws \Illuminate\Validation\ValidationException
-    //  */
-    // public function validateUser()
-    // {
-    //     // $this->ensureIsNotRateLimited();
-    //     $validated = $this->validated();
-
-    //     // $user = User::where('email', $validated['email'])->first();
-
-    //     // if (!$user) {
-    //     //     throw ValidationException::withMessages([
-    //     //         'user-not-found' => trans('app.verify-error.email-not-found', [
-    //     //             'email' => $validated['email'],
-    //     //             'support-mail' => config('app.support-mail'),
-    //     //             'university' => config('app.university-full')
-    //     //         ]),
-    //     //     ]);
-    //     // }
-
-    //     // return $user;
-
-    //     // RateLimiter::clear($this->throttleKey());
-    // }
-
     /**
-     * Ensure the login request is not rate limited.
+     * Attempt to authenticate the request's credentials.
      *
-     * @return void
+     * @return \App\Models\User
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function ensureIsNotRateLimited()
+    public function validateUser()
     {
-        if (! RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
-            return;
+        // $this->ensureIsNotRateLimited();
+        $validated = $this->validated();
+
+        $user = User::where('email', $validated['email'])->first();
+
+        if (!$user) {
+            throw ValidationException::withMessages([
+                'user-not-found' => trans('app.verify-error.email-not-found', [
+                    'email' => $validated['email'],
+                    'support-mail' => config('app.support-mail'),
+                    'university' => config('app.university-full')
+                ]),
+            ]);
         }
 
-        event(new Lockout($this));
-
-        $seconds = RateLimiter::availableIn($this->throttleKey());
-
-        throw ValidationException::withMessages([
-            'email' => trans('auth.throttle', [
-                'seconds' => $seconds,
-                'minutes' => ceil($seconds / 60),
-            ]),
-        ]);
-    }
-
-    /**
-     * Get the rate limiting throttle key for the request.
-     *
-     * @return string
-     */
-    public function throttleKey()
-    {
-        return Str::lower($this->input('email')).'|'.$this->ip();
+        return $user;
     }
 }

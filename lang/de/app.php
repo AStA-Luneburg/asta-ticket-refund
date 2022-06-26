@@ -34,7 +34,7 @@ return [
         'how-does-it-work' => 'Wie funktioniert das?',
         'step-1' => [
             'title' => 'Verifiziere, dass du im SoSe 2022 an der :university immatrikuliert bist/warst',
-            'text' => 'In dem wir eine E-Mail an deine :university-Email senden, können wir dich identifizieren und sicher stellen, dass du auch wirklich du bist. Diese E-Mail enthält einen Link, mit dem du dich anmelden und deinen Antrag ausfüllen kannst.'
+            'text' => 'Indem wir eine E-Mail an deine :university-Email senden, können wir dich identifizieren und sicher stellen, dass du auch wirklich du bist. Diese E-Mail enthält einen Link, mit dem du dich anmelden und deinen Antrag ausfüllen kannst.'
         ],
         'step-2' => [
             'title' => 'Gib eine Bankverbindung an',
@@ -43,7 +43,7 @@ return [
         ],
         'step-3' => [
             'title' => 'Warten, bis wir deinen Antrag bearbeiten',
-            'text' => 'Wir versuchen so schnell wie möglich, die Rückerstattungen abzuarbeiten und euer Geld zurückerstatten. Sobald wir deinen Antrag bearbeiten und das Geld überweisen, werden wir dich per E-Mail informieren.'
+            'text' => 'Wir versuchen so schnell wie möglich, die Rückerstattungen abzuarbeiten und euer Geld zurückzuerstatten. Sobald wir deinen Antrag bearbeiten und das Geld überweisen, werden wir dich per E-Mail informieren.'
         ]
     ],
     'mail-check' => [
@@ -87,7 +87,7 @@ return [
         'invalid-matriculation-number' => 'Die Matrikelnummer ist ungültig. Sie darf nur aus Zahlen bestehen und ist 5-8 Ziffern lang.',
         'matriculation-number-not-found' => 'Wir kennen diese Matrikelnummer nicht, weshalb wir dir keine Rückerstattung ausstellen könnnen. Falls du glaubst, das sei ein Fehler, kontaktiere bitte den <a class="font-semibold underline" href="mailto::support-mail">AStA Support</a>.',
         'matriculation-number-used' => 'Diese Matrikelnummer wurde bereits für einen anderen Antrag verwendet. Falls du glaubst, das sei ein Fehler, kontaktiere bitte den <a class="font-semibold underline" href="mailto::support-mail">AStA Support</a>.',
-        'email-not-found' => 'Wir können deshalb nicht verifizieren, dass du Anspruch auf eine Rückerstattung hast. <br> Falls du Fragen hast, oder du eigentlich immatrikuliert bist, kontaktiere bitte den <a class="font-semibold underline" href="mailto::support-mail">AStA Support</a>.',
+        'email-not-found' => 'Wir können deshalb nicht verifizieren, dass du Anspruch auf eine Rückerstattung hast. <br> Falls du mehrere gültige Leuphana-Adressen oder andere Fragen hast, dann kontaktiere bitte den <a class="font-semibold underline" href="mailto::support-mail">AStA Support</a>.',
     ],
     'mails' => [
         'hello' => 'Hallo!',
@@ -103,7 +103,7 @@ return [
         ],
         'submit-confirmation' => [
             'title' => 'Wir haben deinen Antrag erhalten!',
-            'message' => 'Du hast deinen Antrag auf Rückerstattung für das 9€-Ticket beim <span style="font-weight: 600;">:name</span> eingereicht.<br>Wir haben deinen Antrag erhalten und werden uns bei dir melden, sobald wir das Geld überweisen.',
+            'message' => 'Du hast deinen Antrag auf Rückerstattung für das 9€-Ticket beim <span style="font-weight: 600;">:name</span> eingereicht.<br>Wir haben deinen Antrag erhalten und werden uns bei dir melden, sobald wir das Geld überweisen.<br><br>Solange wir deinen Antrag noch nicht bearbeitet haben, kannst du deine Bankdaten jederzeit ändern, indem du dich über das Formular erneut anmeldest.',
             'support' => 'Falls du weitere Fragen hast, melde dich gerne beim <a href="mailto::email">AStA Support</a>.',
         ]
     ],
@@ -111,6 +111,6 @@ return [
         'imprint' => 'Impressum',
         'privacy-policy' => 'Datenschutzerklärung',
         'faq' => 'FAQ – Häufig gestellte Fragen',
-        'powered-by' => 'Betrieben durch den <a href=":homepage">Allgemeinen Student*innenausschuss der :university</a>',
+        'powered-by' => 'Betrieben durch den <a href=":homepage">Allgemeinen Student*innenausschuss der :university</a><br /><br /><span class="font-medium"><a href="https://github.com/asta-luneburg/asta-ticket-refund">AStA Ticket Refund</a> – Copyright © 2022 <a href="https://mateffy.me">Lukas Mateffy</a> (<a href="mailto:webmaster@asta-lueneburg.de">webmaster@asta-lueneburg.de</a>)</span>',
     ]
 ];

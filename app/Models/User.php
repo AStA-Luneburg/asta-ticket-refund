@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -14,11 +13,7 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     public function refund() {
-        return $this->hasOne(Refund::class, 'email', 'email');
-    }
-
-    public function student() {
-        return $this->belongsTo(EligibleStudent::class, 'email', 'email');
+        return $this->hasOne(Refund::class, 'matriculation_number', 'matriculation_number');
     }
 
     public function isAdmin() {

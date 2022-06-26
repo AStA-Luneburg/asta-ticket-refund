@@ -43,7 +43,7 @@
 
         </p>
         <p class="text-xl mb-16">
-            <?php echo __('app.mail-check.text-3', ['support-email' => config('app.support-mail')]); ?>
+            <?php echo __('app.mail-check.text-3', ['support-mail' => config('app.support-mail')]); ?>
 
         </p>
 

@@ -11,7 +11,7 @@
             {{ __('app.mail-check.text-2') }}
         </p>
         <p class="text-xl mb-16">
-            {!! __('app.mail-check.text-3', ['support-email' => config('app.support-mail')]) !!}
+            {!! __('app.mail-check.text-3', ['support-mail' => config('app.support-mail')]) !!}
         </p>
 
 

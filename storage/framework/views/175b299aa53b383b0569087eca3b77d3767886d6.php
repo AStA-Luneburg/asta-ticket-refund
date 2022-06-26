@@ -115,7 +115,7 @@
             <!-- Hamburger -->
             <div class="-mr-2 flex items-center sm:hidden">
                 <button @click="open = ! open"
-                    class="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-slate-500 hover:bg-slate-700 focus:outline-none focus:bg-slate-800 focus:text-slate-500 transition duration-150 ease-in-out">
+                    class="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-slate-500 hover:bg-slate-200 focus:outline-none focus:bg-slate-300 focus:text-slate-500 transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{ 'hidden': open, 'inline-flex': !open }" class="inline-flex"
                             stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -135,15 +135,13 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
-        
-
-        <div class="py-4 border-t border-slate-800 text-slate-300">
+        <div class="py-4 border-y-2 border-slate-300 text-slate-500 bg-slate-200">
             <div class="flex flex-col px-4 font-medium text-lg">
                 <a href="<?php echo e(route('locale', ['locale' => 'de'])); ?>"
-                    class="<?php if(App::getLocale() === 'de'): ?> underline text-slate-100 <?php endif; ?>">
+                    class="<?php if(App::getLocale() === 'de'): ?> text-slate-800 <?php endif; ?>">
                     <?php echo e(__('app.languages.de')); ?></a>
                 <a href="<?php echo e(route('locale', ['locale' => 'en'])); ?>"
-                    class="<?php if(App::getLocale() === 'en'): ?> underline text-slate-100 <?php endif; ?>">
+                    class="<?php if(App::getLocale() === 'en'): ?> text-slate-800 <?php endif; ?>">
                     <?php echo e(__('app.languages.en')); ?></a>
             </div>
         </div>

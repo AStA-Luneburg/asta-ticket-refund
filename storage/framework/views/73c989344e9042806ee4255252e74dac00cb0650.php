@@ -23,34 +23,42 @@ $iban = $hasBeenSubmitted ? $refund->iban : old('iban');
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
 <?php $component->withAttributes(['step' => 'banking','hide-steps' => true]); ?>
-        Administration
-
-         <?php $__env->slot('content', null, []); ?> 
-            <div
-                class="md:absolute md:top-0 md:right-0 md:bottom-0 flex flex-col-reverse gap-5 md:flex-row md:gap-10 items-center md:pb-4 md:mx-6 lg:mx-8 mt-6 md:mt-2">
-                <form action="<?php echo e(route('admin.create-export')); ?>" method="post">
-                    <?php echo csrf_field(); ?>
-                    <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
-<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.button','data' => ['type' => 'submit']] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
+        <div class="">
+            <p class="mb-2">Administration</p>
+            <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.button','data' => ['type' => 'submit','class' => 'w-auto']] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('button'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['type' => 'submit']); ?>
-                        Neue Anträge exportieren
-                     <?php echo $__env->renderComponent(); ?>
+<?php $component->withAttributes(['type' => 'submit','class' => 'w-auto']); ?>
+                Neue Anträge exportieren
+             <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
 <?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
 <?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
 <?php endif; ?>
+        </div>
+
+         <?php $__env->slot('content', null, []); ?> 
+            <div
+                class="md:absolute md:top-0 md:right-0 md:bottom-0 flex flex-col-reverse gap-5 md:flex-row md:gap-10 items-center md:pb-4 md:mx-6 lg:mx-8 mt-6 md:mt-2">
+                <form action="<?php echo e(route('admin.create-export')); ?>" method="post">
+                    <?php echo csrf_field(); ?>
+
                 </form>
                 <div
                     class="bg-slate-100 text-base font-bold text-slate-900 border-2 border-slate-300 rounded md:rounded-xl flex justify-start items-center gap-2 px-2 py-1 w-full md:text-xl md:px-4 md:py-2 md:w-auto md:gap-0 md:flex-col shadow opacity-70">
                     <span><?php echo e($refundCount); ?></span>
-                    <span class="text-base text-center font-medium">Anträge</span>
+                    <span class="text-base text-center font-medium">Unexportierte Anträge</span>
+                </div>
+                <div
+                    class="bg-slate-100 text-base font-bold text-slate-900 border-2 border-slate-300 rounded md:rounded-xl flex justify-start items-center gap-2 px-2 py-1 w-full md:text-xl md:px-4 md:py-2 md:w-auto md:gap-0 md:flex-col shadow opacity-70">
+                    <span><?php echo e($totalRefundCount); ?></span>
+                    <span class="text-base text-center font-medium">Alle Anträge</span>
                 </div>
             </div>
          <?php $__env->endSlot(); ?>

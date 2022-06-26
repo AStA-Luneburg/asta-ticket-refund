@@ -26,7 +26,7 @@ switch ($color) {
         <h3 class="text-xl font-medium">{{ $title }}</h3>
 
         @if (isset($subtitle) && $subtitle !== null)
-            <span class="text-base text-center font-medium">{{ $subtitle }}</span>
+            <span class="text-base text-right font-medium">{{ $subtitle }}</span>
         @endif
     </header>
 
