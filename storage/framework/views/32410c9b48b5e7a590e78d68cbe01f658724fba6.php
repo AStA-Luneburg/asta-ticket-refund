@@ -55,7 +55,17 @@
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
 <?php $component->withAttributes(['class' => 'flex gap-10 text-sm text-slate-500 py-4 hidden md:block']); ?>
-        <p class="md:px-4"><?php echo __('app.footer.powered-by', ['homepage' => config('app.homepage-url'), 'university' => config('app.university-full')]); ?></p>
+        <p class="md:px-4">
+            <?php echo __('app.footer.powered-by', ['homepage' => config('app.homepage-url'), 'university' => config('app.university-full')]); ?>
+
+            <br /><br />
+            <span class="font-medium">
+                <a href="https://github.com/asta-luneburg/asta-ticket-refund">AStA Ticket Refund</a>
+                 – Copyright © 2022 
+                <a href="https://mateffy.me">Lukas Mateffy</a> (<a href="mailto:webmaster@asta-lueneburg.de">webmaster@asta-lueneburg.de</a>)
+            </span>
+        </p>
+
      <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>

@@ -19,6 +19,15 @@
         </div>
     </x-content>
     <x-content class="flex gap-10 text-sm text-slate-500 py-4 hidden md:block">
-        <p class="md:px-4">{!! __('app.footer.powered-by', ['homepage' => config('app.homepage-url'), 'university' => config('app.university-full')]) !!}</p>
+        <p class="md:px-4">
+            {!! __('app.footer.powered-by', ['homepage' => config('app.homepage-url'), 'university' => config('app.university-full')]) !!}
+            <br /><br />
+            <span class="font-medium">
+                <a href="https://github.com/asta-luneburg/asta-ticket-refund">AStA Ticket Refund</a>
+                 – Copyright © 2022 
+                <a href="https://mateffy.me">Lukas Mateffy</a> (<a href="mailto:webmaster@asta-lueneburg.de">webmaster@asta-lueneburg.de</a>)
+            </span>
+        </p>
+
     </x-content>
 </footer>

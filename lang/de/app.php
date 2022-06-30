@@ -111,6 +111,6 @@ return [
         'imprint' => 'Impressum',
         'privacy-policy' => 'Datenschutzerklärung',
         'faq' => 'FAQ – Häufig gestellte Fragen',
-        'powered-by' => 'Betrieben durch den <a href=":homepage">Allgemeinen Student*innenausschuss der :university</a><br /><br /><span class="font-medium"><a href="https://github.com/asta-luneburg/asta-ticket-refund">AStA Ticket Refund</a> – Copyright © 2022 <a href="https://mateffy.me">Lukas Mateffy</a> (<a href="mailto:webmaster@asta-lueneburg.de">webmaster@asta-lueneburg.de</a>)</span>',
+        'powered-by' => 'Betrieben durch den <a href=":homepage">Allgemeinen Student*innenausschuss der :university</a>',
     ]
 ];
