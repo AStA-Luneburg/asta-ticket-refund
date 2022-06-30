@@ -23,12 +23,12 @@ $iban = $hasBeenSubmitted ? $refund->iban : old('iban');
                 <div
                     class="bg-slate-100 text-base font-bold text-slate-900 border-2 border-slate-300 rounded md:rounded-xl flex justify-start items-center gap-2 px-2 py-1 w-full md:text-xl md:px-4 md:py-2 md:w-auto md:gap-0 md:flex-col shadow opacity-70">
                     <span>{{ $refundCount }}</span>
-                    <span class="text-base text-center font-medium">Unexportierte Anträge</span>
+                    <span class="text-base text-center font-medium">Neue Anträge</span>
                 </div>
                 <div
                     class="bg-slate-100 text-base font-bold text-slate-900 border-2 border-slate-300 rounded md:rounded-xl flex justify-start items-center gap-2 px-2 py-1 w-full md:text-xl md:px-4 md:py-2 md:w-auto md:gap-0 md:flex-col shadow opacity-70">
                     <span>{{ $totalRefundCount }}</span>
-                    <span class="text-base text-center font-medium">Alle Anträge</span>
+                    <span class="text-base text-center font-medium">Exportierte Anträge</span>
                 </div>
             </div>
         </x-slot:content>
