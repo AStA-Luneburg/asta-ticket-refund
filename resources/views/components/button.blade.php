@@ -3,7 +3,7 @@ $primary = $attributes->get('element');
 @endphp
 
 @if ($attributes->get('element') === 'link')
-    <a {{ $attributes->merge(['type' => 'submit', 'class' => 'btn']) }}>
+    <a {{ $attributes->merge(['class' => 'btn']) }}>
         {{ $slot }}
     </a>
 @else

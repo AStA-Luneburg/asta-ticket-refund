@@ -89,28 +89,28 @@ $iban = $hasBeenSubmitted ? $refund->iban : old('iban');
 <?php $component->withAttributes(['title' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute('Export ' . $export->id . ' (' . count($export->refunds) . ' Anträge)'),'subtitle' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($export->created_at)]); ?>
                 <nav class="flex gap-4">
                     <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
-<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.button','data' => ['element' => 'link','href' => route('admin.export.json', ['export' => $export]),'download' => 'export-' . $export->id . '_' . $export->created_at . 'json']] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.button','data' => ['element' => 'link','href' => route('admin.export.json', ['export' => $export]),'download' => 'export-' . $export->id . '_' . $export->created_at . '.json']] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('button'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['element' => 'link','href' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('admin.export.json', ['export' => $export])),'download' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute('export-' . $export->id . '_' . $export->created_at . 'json')]); ?>Als JSON exportieren <?php echo $__env->renderComponent(); ?>
+<?php $component->withAttributes(['element' => 'link','href' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('admin.export.json', ['export' => $export])),'download' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute('export-' . $export->id . '_' . $export->created_at . '.json')]); ?>Als JSON exportieren <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
 <?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
 <?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
 <?php endif; ?>
                     <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
-<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.button','data' => ['element' => 'link','href' => route('admin.export.csv', ['export' => $export]),'download' => 'export-' . $export->id . '_' . $export->created_at . 'csv']] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.button','data' => ['element' => 'link','href' => route('admin.export.csv', ['export' => $export]),'download' => 'export-' . $export->id . '_' . $export->created_at . '.csv']] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('button'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['element' => 'link','href' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('admin.export.csv', ['export' => $export])),'download' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute('export-' . $export->id . '_' . $export->created_at . 'csv')]); ?>Als CSV exportieren <?php echo $__env->renderComponent(); ?>
+<?php $component->withAttributes(['element' => 'link','href' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('admin.export.csv', ['export' => $export])),'download' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute('export-' . $export->id . '_' . $export->created_at . '.csv')]); ?>Als CSV exportieren <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
 <?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
