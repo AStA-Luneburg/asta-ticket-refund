@@ -38,8 +38,8 @@ $iban = $hasBeenSubmitted ? $refund->iban : old('iban');
         @foreach ($exports->reverse() as $export)
             <x-notification :title="'Export ' . $export->id . ' (' . count($export->refunds) . ' Anträge)'" :subtitle="$export->created_at">
                 <nav class="flex gap-4">
-                    <x-button element="link" :href="route('admin.export.json', ['export' => $export])" :download="'export-' . $export->id . '_' . $export->created_at . 'json'">Als JSON exportieren</x-button>
-                    <x-button element="link" :href="route('admin.export.csv', ['export' => $export])" :download="'export-' . $export->id . '_' . $export->created_at . 'csv'">Als CSV exportieren</x-button>
+                    <x-button element="link" :href="route('admin.export.json', ['export' => $export])" :download="'export-' . $export->id . '_' . $export->created_at . '.json'">Als JSON exportieren</x-button>
+                    <x-button element="link" :href="route('admin.export.csv', ['export' => $export])" :download="'export-' . $export->id . '_' . $export->created_at . '.csv'">Als CSV exportieren</x-button>
                 </nav>
             </x-notification>
         @endforeach
