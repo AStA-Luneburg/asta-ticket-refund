@@ -6,7 +6,7 @@
     <x-content>
         <x-notification color="slate" title="Überlastung der Leuphana-Server" subtitle="">
             <p class="mb-0">
-                Es stellen gerade sehr viele Studierende einen Antrag. Daher kann es dazu kommen, dass der Leuphana Mail-Server unsere E-Mails nicht direkt zustellt. <br><strong class="font-semibold">Falls du keine E-Mail erhältst, versuche es einfach ein wenig später erneut.</strong>
+                Es stellen gerade sehr viele Studierende einen Antrag. Daher kann es momentan leider ca. 10-20 Minuten dauern, bis der Leuphana Mail-Server unsere E-Mails zustellt. Wir sind im Kontakt mit dem MIZ und arbeiten an einer Lösung.<br><strong class="font-semibold">Falls du gar keine E-Mail erhältst, versuche es einfach ein wenig später erneut.</strong>
             </p>
         </x-notification>
 
