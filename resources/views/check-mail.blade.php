@@ -5,9 +5,27 @@
 
     <x-content>
         <x-notification color="slate" title="Überlastung der Leuphana-Server" subtitle="01.07.22 11:56">
-            <p class="mb-0">
-                Es stellen gerade sehr viele Studierende einen Antrag. Daher kann es momentan leider ca. 10-20 Minuten dauern, bis der Leuphana Mail-Server unsere E-Mails zustellt. Wir sind im Kontakt mit dem MIZ und arbeiten an einer Lösung.<br><strong class="font-semibold">Falls du gar keine E-Mail erhältst, versuche es einfach ein wenig später erneut.</strong>
-            </p>
+            @if (App::getLocale() === 'de')
+                <p class="mb-4">
+                    Derzeit versuchen viele Studierende, ihre Rückerstattungsanträge zu stellen.
+                </p>
+                <p class="mb-4">
+                    Leider hat der Mailserver der Leuphana angefangen, unsere E-Mails zu drosseln, sodass es bis zu 30-45 Minuten dauern kann, bis diese ankommen. Wir sind in Kontakt mit dem IT-Support der Leuphana, aber sie haben die Drosselung unseres Servers noch nicht aufgehoben.
+                </p>
+                <p class="mb-0 font-semibold"> 
+                    Bitte warte noch ein wenig, bis die Bestätigungsmail eintrifft. Wenn sie nach einer Stunde immer noch nicht eingetroffen ist, versuchen Sie es bitte erneut. :)
+                </p>
+            @else
+                <p class="mb-4">
+                    Currently there are a lot of students trying to submit their refund requests.
+                </p>
+                <p class="mb-4">
+                    Unfortunately, the Leuphana mail server is starting to throttle our mails, so they can take up to 30-45 minutes to arrive. We’re in contact with Leuphana’s IT-Support, however, they have not stopped blocking our server.
+                </p>
+                <p class="mb-0 font-semibold"> 
+                    Please wait a little bit longer until the verification mail arrives. If it still has not arrived after an hour, please try again. :)
+                </p>
+            @endif
         </x-notification>
 
         <p class="text-xl mb-4">
