@@ -36,9 +36,6 @@ class InjectLocale
             $this->saveLocale($request, $locale);
         }
 
-        Log::debug('InjectLocale: routeLocale: ', [ 'routeLocale' => $routeLocale, 'locale' => $locale, 'session' => $request->session()->get('locale') ]);
-
-
         App::setLocale($locale);
 
         return $next($request);
