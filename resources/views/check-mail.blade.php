@@ -10,7 +10,7 @@
                     Derzeit versuchen viele Studierende, ihre Rückerstattungsanträge zu stellen.
                 </p>
                 <p class="mb-4">
-                    Leider hat der Mailserver der Leuphana angefangen, unsere E-Mails zu drosseln, sodass es bis zu 30-45 Minuten dauern kann, bis diese ankommen. Wir sind in Kontakt mit dem IT-Support der Leuphana, aber die Drosselung unseres Servers wurde noch nicht aufgehoben.
+                    Leider hat der Mailserver der Leuphana angefangen, unsere E-Mails zu drosseln, sodass es bis zu 30-45 Minuten dauern kann, bis diese ankommen. Wir sind in Kontakt mit dem MIZ, aber die Drosselung unseres Servers wurde noch nicht aufgehoben.
                 </p>
                 <p class="mb-0 font-semibold"> 
                     Bitte warte noch ein wenig, bis die Bestätigungsmail eintrifft. Wenn sie nach einer Stunde immer noch nicht eingetroffen ist, versuche es bitte erneut. :)
