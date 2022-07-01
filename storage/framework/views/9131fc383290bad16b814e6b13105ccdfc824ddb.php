@@ -34,6 +34,25 @@
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
+        <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.notification','data' => ['color' => 'slate','title' => 'Überlastung der Leuphana-Server','subtitle' => '']] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('notification'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['color' => 'slate','title' => 'Überlastung der Leuphana-Server','subtitle' => '']); ?>
+            <p class="mb-0">
+                Es stellen gerade sehr viele Studierende einen Antrag. Daher kann es dazu kommen, dass der Leuphana Mail-Server unsere E-Mails nicht direkt zustellt. <br><strong class="font-semibold">Falls du keine E-Mail erhältst, versuche es einfach ein wenig später erneut.</strong>
+            </p>
+         <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
+<?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
+<?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
+<?php endif; ?>
+
         <p class="text-xl mb-4">
             <?php echo __('app.mail-check.text-1', ['email' => $email]); ?>
 
