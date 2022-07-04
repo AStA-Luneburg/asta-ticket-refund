@@ -79,7 +79,7 @@
             @else
                 <x-notification color="slate" title="Problems when using Safari" subtitle="">
                     <p class="mb-4">
-                        A couple of users have had problems logging in when using the Safari browser.
+                        A couple of students have had problems logging in when using the Safari browser.
                     </p>
                     <p class="mb-0">
                         If your verification link is redirecting you back to the homepage, try copying the link out of the mail and manually pasting it into the URL bar at the top. Alternatively, you can also try using a different Browser (like Firefox or Chrome).
