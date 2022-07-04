@@ -176,6 +176,52 @@ unset($__errorArgs, $__bag); ?>
 <?php endif; ?>
             </div>
 
+            <?php if(App::getLocale() === 'de'): ?>
+                <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.notification','data' => ['color' => 'slate','title' => 'Hinweis an Safari-Nutzer','subtitle' => '']] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('notification'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['color' => 'slate','title' => 'Hinweis an Safari-Nutzer','subtitle' => '']); ?>
+                    <p class="mb-4">
+                        Ein paar Studierende hatten Probleme, sich mit dem Verifizierungslink im Safari-Browser anzumelden.
+                    </p>
+                    <p class="mb-0">
+                        Wenn du einen Verifizierungslink erhältst, damit aber zurück auf die Startseite geleitet wirst, dann kopiere den Link aus der Mail und füge ihn manuell in die URL-Leiste ein. Alternativ kannst du ihn auch in einem anderen Browser öffnen (z.B. Firefox oder Chrome).
+                    </p>
+                 <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
+<?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
+<?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
+<?php endif; ?>
+            <?php else: ?>
+                <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.notification','data' => ['color' => 'slate','title' => 'Problems when using Safari','subtitle' => '']] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('notification'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['color' => 'slate','title' => 'Problems when using Safari','subtitle' => '']); ?>
+                    <p class="mb-4">
+                        A couple of users have had problems logging in when using the Safari browser.
+                    </p>
+                    <p class="mb-0">
+                        If your verification link is redirecting you back to the homepage, try copying the link out of the mail and manually pasting it into the URL bar at the top. Alternatively, you can also try using a different Browser (like Firefox or Chrome).
+                    </p>
+                 <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
+<?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
+<?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
+<?php endif; ?>
+            <?php endif; ?>
+
             <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
 <?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.bottom-nav','data' => []] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('bottom-nav'); ?>

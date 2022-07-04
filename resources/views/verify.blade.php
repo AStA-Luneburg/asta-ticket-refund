@@ -67,6 +67,26 @@
                 <x-auth-validation-errors class="mb-4" :errors="$errors->get('privacy-check')" />
             </div>
 
+            @if (App::getLocale() === 'de')
+                <x-notification color="slate" title="Hinweis an Safari-Nutzer" subtitle="">
+                    <p class="mb-4">
+                        Ein paar Studierende hatten Probleme, sich mit dem Verifizierungslink im Safari-Browser anzumelden.
+                    </p>
+                    <p class="mb-0">
+                        Wenn du einen Verifizierungslink erhältst, damit aber zurück auf die Startseite geleitet wirst, dann kopiere den Link aus der Mail und füge ihn manuell in die URL-Leiste ein. Alternativ kannst du ihn auch in einem anderen Browser öffnen (z.B. Firefox oder Chrome).
+                    </p>
+                </x-notification>
+            @else
+                <x-notification color="slate" title="Problems when using Safari" subtitle="">
+                    <p class="mb-4">
+                        A couple of users have had problems logging in when using the Safari browser.
+                    </p>
+                    <p class="mb-0">
+                        If your verification link is redirecting you back to the homepage, try copying the link out of the mail and manually pasting it into the URL bar at the top. Alternatively, you can also try using a different Browser (like Firefox or Chrome).
+                    </p>
+                </x-notification>
+            @endif
+
             <x-bottom-nav>
                 <x-button element="link" :href="route('welcome')">
                     {{ __('app.back') }}
