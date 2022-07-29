@@ -4,32 +4,6 @@
     </x-page-title>
 
     <x-content>
-        @if (App::getLocale() === 'de')
-            <x-notification color="slate" title="Überlastung der Leuphana-Server" subtitle="01.07.22 13:15">
-                <p class="mb-4">
-                    Derzeit versuchen viele Studierende, ihre Rückerstattungsanträge zu stellen.
-                </p>
-                <p class="mb-4">
-                    Leider hat der Mailserver der Leuphana angefangen, unsere E-Mails zu drosseln, sodass es bis zu 30-45 Minuten dauern kann, bis diese ankommen. Wir sind in Kontakt mit dem MIZ, aber die Drosselung unseres Servers wurde noch nicht aufgehoben.
-                </p>
-                <p class="mb-0 font-semibold"> 
-                    Bitte warte noch ein wenig, bis die Bestätigungsmail eintrifft. Wenn sie nach einer Stunde immer noch nicht eingetroffen ist, versuche es bitte erneut. :)
-                </p>
-            </x-notification>
-        @else
-            <x-notification color="slate" title="Throttling by Leuphana's servers" subtitle="01.07.22 13:15">
-                <p class="mb-4">
-                    Currently there are a lot of students trying to submit their refund requests.
-                </p>
-                <p class="mb-4">
-                    Unfortunately, the Leuphana mail server is starting to throttle our mails, so they can take up to 30-45 minutes to arrive. We’re in contact with Leuphana’s IT-Support, however, they have not stopped blocking our server.
-                </p>
-                <p class="mb-0 font-semibold"> 
-                    Please wait a little bit longer until the verification mail arrives. If it still has not arrived after an hour, please try again. :)
-                </p>
-            </x-notification>
-        @endif
-
         <p class="text-xl mb-4">
             {!! __('app.mail-check.text-1', ['email' => $email]) !!}
         </p>
