@@ -45,28 +45,11 @@ class SaveRefundRequest extends FormRequest
     public function validate() {
         $validated = $this->validated();
         $user = $this->user();
-        // $isFirstSave = $user->refund === null;
-        // $student = null;
 
-        // if ($isFirstSave) {
-        //     // Check if matriculation number is used already
-        //     $student = EligibleStudent::where('matriculation_number', $validated['matriculation_number'])->first();
-
-        //     if (!$student) {
-        //         throw ValidationException::withMessages([
-        //             'matriculation_number' => __('app.verify-error.matriculation-number-not-found', ['support-mail' => config('app.support-mail')]),
-        //         ]);
-        //     } else if ($student && $student->refund !== null) {
-        //         throw ValidationException::withMessages([
-        //             'matriculation_number' => __('app.verify-error.matriculation-number-used', ['support-mail' => config('app.support-mail')]),
-        //         ]);
-        //     }
-        // } else {
-        //     // If it's not the first save (submit), the matriculation_number cannot be changed,
-        //     // so we always just set the validated input to the already set matriculation_number
-        //     $validated['matriculation_number'] = $user->refund->matriculation_number;
-        //     $student = $user->refund->student;
-        // }
+        // Deny submission, if the User has an exported Refund associated with it
+        if ($user->refund !== null && $user->refund['export_id'] !== null) {
+            return abort(403);
+        }
 
         return array_merge($validated, [
             'iban' => IBAN::prettyPrint($validated['iban'])

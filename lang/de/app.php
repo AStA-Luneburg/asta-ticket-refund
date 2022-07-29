@@ -88,6 +88,7 @@ return [
         'matriculation-number-not-found' => 'Wir kennen diese Matrikelnummer nicht, weshalb wir dir keine Rückerstattung ausstellen könnnen. Falls du glaubst, das sei ein Fehler, kontaktiere bitte den <a class="font-semibold underline" href="mailto::support-mail">AStA Support</a>.',
         'matriculation-number-used' => 'Diese Matrikelnummer wurde bereits für einen anderen Antrag verwendet. Falls du glaubst, das sei ein Fehler, kontaktiere bitte den <a class="font-semibold underline" href="mailto::support-mail">AStA Support</a>.',
         'email-not-found' => 'Wir können deshalb nicht verifizieren, dass du Anspruch auf eine Rückerstattung hast. <br> Falls du mehrere gültige Leuphana-Adressen oder andere Fragen hast, dann kontaktiere bitte den <a class="font-semibold underline" href="mailto::support-mail">AStA Support</a>.',
+        'cannot-change-after-export' => 'Du darfst deine Daten nicht mehr ändern, nachdem wir diese exportiert haben.'
     ],
     'mails' => [
         'hello' => 'Hallo!',

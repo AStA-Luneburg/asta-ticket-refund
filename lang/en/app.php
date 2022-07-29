@@ -88,6 +88,7 @@ return [
         'matriculation-number-not-found' => 'We do not recognize this matriculation number, which is why we cannot issue you a refund. If you think that this is a mistake, please contact <a class="font-semibold underline" href="mailto::support-mail">AStA support</a>.',
         'matriculation-number-used' => 'This matriculation number has already been used in another refund application. If you think that this is a mistake, please contact <a class="font-semibold underline" href="mailto::support-mail">AStA support</a>.',
         'email-not-found' => 'Therefore, we could not verify that you\'re eligble for a refund. <br> If you have any questions or you think this is a mistake, please contact <a class="font-semibold underline" href="mailto::support-mail">AStA support</a>.',
+        'cannot-change-after-export' => 'You\'re not allowed to change your details after they\'ve been exported.'
     ],
     'mails' => [
         'hello' => 'Hello!',
