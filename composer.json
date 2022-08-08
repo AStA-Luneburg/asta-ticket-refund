@@ -8,6 +8,7 @@
         "php": "^8.0.2",
         "cesargb/laravel-magiclink": "^2.12",
         "cmpayments/iban": "^1.1",
+        "doctrine/dbal": "^3.4",
         "filament/filament": "^2.0",
         "globalcitizen/php-iban": "^4.1",
         "grosv/laravel-passwordless-login": "^1.8",

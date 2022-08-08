@@ -1,4 +1,5 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
+const colors = require("tailwindcss/colors");
 
 module.exports = {
     content: [
@@ -6,8 +7,9 @@ module.exports = {
         "./storage/framework/views/*.php",
         "./resources/views/**/*.blade.php",
         "./lang/**/*.php",
+        "./vendor/filament/**/*.blade.php",
     ],
-
+    darkMode: "class",
     theme: {
         extend: {
             fontFamily: {
@@ -27,9 +29,16 @@ module.exports = {
                     900: "#002444",
                 },
                 "asta-red": "#cc2e2f",
+                danger: colors.rose,
+                primary: colors.indigo,
+                success: colors.green,
+                warning: colors.yellow,
             },
         },
     },
 
-    plugins: [require("@tailwindcss/forms")],
+    plugins: [
+        require("@tailwindcss/forms"),
+        require("@tailwindcss/typography"),
+    ],
 };

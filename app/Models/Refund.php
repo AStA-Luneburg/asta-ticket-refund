@@ -19,6 +19,10 @@ class Refund extends Model
         return $this->belongsTo(Export::class, 'export_id', 'id');
     }
 
+    public function isExported() {
+        return $this->export !== null;
+    }
+
     protected $fillable = [
         'email',
         'name',
@@ -43,4 +47,8 @@ class Refund extends Model
     protected $casts = [
 
     ];
+
+    public function getMetaNameAttribute() {
+        return 'Rückerstattung von ' . $this->user->name;
+    }
 }

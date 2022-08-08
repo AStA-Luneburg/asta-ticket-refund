@@ -3,8 +3,9 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\RefundResource\Pages;
-use App\Filament\Resources\RefundResource\RelationManagers;
+use App\Models\Export;
 use App\Models\Refund;
+use App\Models\User;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -13,21 +14,50 @@ use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
+use App\Rules\IBAN;
+use Filament\Pages\Page;
+use Filament\Resources\Pages\CreateRecord;
+use Filament\Resources\Pages\EditRecord;
+
 class RefundResource extends Resource
 {
     protected static ?string $model = Refund::class;
-    protected static ?string $recordTitleAttribute = 'user.name';
+    protected static ?string $recordTitleAttribute = 'meta_name';
+    protected static ?string $modelLabel = 'Rückerstattung';
+    protected static ?string $pluralModelLabel = 'Rückerstattungen';
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-currency-euro';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\Select::make('matriculation_number')
-                    ->relationship('user', 'name'),
-                Forms\Components\TextInput::make('name')->required(),
-                Forms\Components\TextInput::make('email')->email()->required(),
+                    ->label('Studierende*r')
+                    ->relationship('user', 'name_with_matriculation')
+                    ->placeholder('Name oder Matrikelnummer')
+                    ->unique(ignoreRecord: true)
+                    ->disabled(fn (Page $livewire) => $livewire instanceof EditRecord)
+                    ->searchable()
+                    ->required(),
+                Forms\Components\TextInput::make('export_id')
+                    ->label('Datenexport')
+                    ->placeholder('Nicht exportiert')
+                    ->visibleOn(['edit', 'view'])
+                    ->disabled(true),
+                Forms\Components\Fieldset::make('Kontodaten')
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->label('Kontoinhaber*in')
+                            ->placeholder('Name')
+                            ->maxLength(255)
+                            ->required(),
+                        Forms\Components\TextInput::make('iban')
+                            ->label('IBAN')
+                            ->placeholder('IBAN')
+                            ->rules([new IBAN])
+                            ->required(),
+                    ]),
             ]);
     }
 
@@ -35,26 +65,34 @@ class RefundResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user.matriculation_number')->label('Matrikelnummer'),
-                Tables\Columns\TextColumn::make('user.name')->label('Name der/des Studierenden'),
+                Tables\Columns\TextColumn::make('user')
+                    ->label('Studierende*r')
+                    ->formatStateUsing(fn (User $state): string => $state->name)
+                    ->description(fn (Refund $record): string => "Matrikelnummer: {$record->user->matriculation_number}")
+                    ->searchable(query: function (Builder $query, string $search): Builder {
+                        return $query
+                            ->where('name', 'like', "%{$search}%")
+                            ->orWhere('matriculation_number', 'like', "%{$search}%");
+                    }),
                 Tables\Columns\TextColumn::make('name')->label('Kontoinhaber*in'),
                 Tables\Columns\TextColumn::make('iban')->label('IBAN'),
+                Tables\Columns\BadgeColumn::make('export.name')
+                    ->label('Datenexport')
+                    ->default('Nicht exportiert')
+                    ->colors([
+                        'success',
+                        'primary' => 'Nicht exportiert'
+                    ])
             ])
-            ->filters([
-                //
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make(),
-            ]);
+            ->filters([])
+            ->actions([])
+            ->bulkActions([]);
     }
 
     public static function getRelations(): array
     {
         return [
-            //
+            // RelationManagers\UserRelationManager::class,
         ];
     }
 
@@ -63,7 +101,10 @@ class RefundResource extends Resource
         return [
             'index' => Pages\ListRefunds::route('/'),
             'create' => Pages\CreateRefund::route('/create'),
+            'view' => Pages\ViewRefund::route('/{record}'),
             'edit' => Pages\EditRefund::route('/{record}/edit'),
         ];
     }
+
+
 }
