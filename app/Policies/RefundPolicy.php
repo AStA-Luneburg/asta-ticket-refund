@@ -53,7 +53,7 @@ class RefundPolicy
      */
     public function update(User $user, Refund $refund)
     {
-        return ($user->id === $refund->user->id && !$refund->isExported()) || ($user->isAdmin());
+        return !$refund->isExported() && ($user->id === $refund->user->id || $user->isAdmin());
     }
 
     /**

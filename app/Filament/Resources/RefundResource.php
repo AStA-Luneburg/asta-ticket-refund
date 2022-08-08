@@ -18,6 +18,8 @@ use App\Rules\IBAN;
 use Filament\Pages\Page;
 use Filament\Resources\Pages\CreateRecord;
 use Filament\Resources\Pages\EditRecord;
+use Filament\Tables\Filters\Filter;
+use Filament\Tables\Filters\SelectFilter;
 
 class RefundResource extends Resource
 {
@@ -84,7 +86,16 @@ class RefundResource extends Resource
                         'primary' => 'Nicht exportiert'
                     ])
             ])
-            ->filters([])
+            ->filters([
+                Filter::make('not_exported')
+                    ->label('Nicht exportiert')
+                    ->query(fn (Builder $query): Builder => $query->where('export_id', null))
+                    ->toggle(),
+                SelectFilter::make('export')
+                    ->label('Datenexport')
+                    ->relationship('export', 'id')
+                    // ->searchable()
+            ])
             ->actions([])
             ->bulkActions([]);
     }
@@ -106,5 +117,8 @@ class RefundResource extends Resource
         ];
     }
 
-
+    protected function shouldPersistTableFiltersInSession(): bool
+    {
+        return false;
+    }
 }

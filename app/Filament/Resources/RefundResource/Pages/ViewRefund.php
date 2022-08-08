@@ -21,14 +21,15 @@ class ViewRefund extends ViewRecord
             ];
         } else {
             return [
+                Actions\EditAction::make(),
                 Actions\Action::make('anonymize')
                     ->label('Anonymisieren')
+                    ->color('danger')
                     ->requiresConfirmation()
                     ->action(function (): void {
-                        $this->record->iban = static::$anonymized_iban;
+                        $this->record->iban = $this->data['iban'] = static::$anonymized_iban;
                         $this->record->save();
                     }),
-                Actions\EditAction::make(),
                 Actions\DeleteAction::make()
             ];
         }

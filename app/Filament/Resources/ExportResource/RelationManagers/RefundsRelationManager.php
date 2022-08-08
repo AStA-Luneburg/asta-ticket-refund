@@ -39,16 +39,12 @@ class RefundsRelationManager extends RelationManager
                             ->orWhere('matriculation_number', 'like', "%{$search}%");
                     }),
                 Tables\Columns\TextColumn::make('name')->label('Kontoinhaber*in'),
-                Tables\Columns\TextColumn::make('iban')->label('IBAN')->extraAttributes(['class' => 'font-mono text-sm'])
+                Tables\Columns\TextColumn::make('iban')->label('IBAN')
             ])
-            ->filters([
-                //
-            ])
+            ->filters([])
             ->actions([
-                // Tables\Actions\ViewAction::make()->url(fn ($record): string => '/admin/refunds/' . $record->id),
-            ])
-            ->headerActions([
-                // Tables\Actions\CreateAction::make(),
-            ]);
+                Tables\Actions\ViewAction::make()->url(fn ($record): string => '/admin/refunds/' . $record->id),
+                ])
+            ->headerActions([]);
     }
 }
