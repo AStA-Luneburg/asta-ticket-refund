@@ -14,10 +14,12 @@ Software um Anträge auf Semesterticket-Rückerstattungen aufgrund des 9€-Tick
 
 <br />
 
+-   [Demo](https://9-euro.asta-lueneburg.de)
 -   [Features](#features)
 -   [Installation](#installation)
 -   [Anpassung an deine Universität](#anpassung-an-deine-universität)
 -   [Admin Dashboard](#admin-dashboard)
+-   [Anleitungen zur Nutzung](#anleitungen-zur-nutzung)
 -   [Changelog](#changelog)
 
 <br />
@@ -215,6 +217,16 @@ ADMIN_EMAILS="email-1@example.com"
 
 ADMIN_EMAILS="email-1@example.com,email-2@example.com,..."
 ```
+
+<br />
+
+## Anleitungen zur Nutzung
+
+Im Wiki sind mehrere Anleitungen zur Nutzung verfügbar.
+
+[Hier geht's zum Wiki!](https://github.com/AStA-Luneburg/asta-ticket-refund/wiki)
+
+<br />
 
 ## Changelog
 
