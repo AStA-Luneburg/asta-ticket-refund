@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Policies\UserPolicy;
 use Illuminate\Support\Facades\Auth;
 
 class AuthServiceProvider extends ServiceProvider
@@ -16,6 +17,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+        Refund::class => RefundPolicy::class,
+        User::class => UserPolicy::class,
     ];
 
     /**

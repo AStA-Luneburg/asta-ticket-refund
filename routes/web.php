@@ -39,10 +39,8 @@ Route::middleware([InjectLocale::class])->group(function () {
     Route::get('/my-refund', [MyRefundController::class, 'index'])->middleware(['auth'])->name('my-refund');
     Route::post('/my-refund', [MyRefundController::class, 'store'])->middleware(['auth'])->name('my-refund.store');
 
-    Route::get('/admin', [AdminController::class, 'index'])->middleware(['auth', 'auth.admin'])->name('admin');
-    Route::post('/admin/export', [AdminController::class, 'createExport'])->middleware(['auth', 'auth.admin'])->name('admin.create-export');
-    Route::get('/admin/export/{export}/json', [AdminController::class, 'downloadJSON'])->middleware(['auth', 'auth.admin'])->name('admin.export.json');
-    Route::get('/admin/export/{export}/csv', [AdminController::class, 'downloadCSV'])->middleware(['auth', 'auth.admin'])->name('admin.export.csv');
+    // Login is done by verifying your email (also admin mails)
+    Route::redirect('/admin/login', '/verify');
 
     Route::get('/locale/{locale}', function (Request $request, $locale) {
         return redirect($request->query('redirect-url', '/'));
@@ -50,4 +48,3 @@ Route::middleware([InjectLocale::class])->group(function () {
 });
 
 Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])->middleware(['auth'])->name('logout');
-

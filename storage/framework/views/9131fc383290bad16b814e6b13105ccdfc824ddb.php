@@ -34,58 +34,6 @@
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
-        <?php if(App::getLocale() === 'de'): ?>
-            <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
-<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.notification','data' => ['color' => 'slate','title' => 'Überlastung der Leuphana-Server','subtitle' => '01.07.22 13:15']] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
-<?php $component->withName('notification'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
-<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['color' => 'slate','title' => 'Überlastung der Leuphana-Server','subtitle' => '01.07.22 13:15']); ?>
-                <p class="mb-4">
-                    Derzeit versuchen viele Studierende, ihre Rückerstattungsanträge zu stellen.
-                </p>
-                <p class="mb-4">
-                    Leider hat der Mailserver der Leuphana angefangen, unsere E-Mails zu drosseln, sodass es bis zu 30-45 Minuten dauern kann, bis diese ankommen. Wir sind in Kontakt mit dem MIZ, aber die Drosselung unseres Servers wurde noch nicht aufgehoben.
-                </p>
-                <p class="mb-0 font-semibold"> 
-                    Bitte warte noch ein wenig, bis die Bestätigungsmail eintrifft. Wenn sie nach einer Stunde immer noch nicht eingetroffen ist, versuche es bitte erneut. :)
-                </p>
-             <?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
-<?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
-<?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
-<?php endif; ?>
-        <?php else: ?>
-            <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
-<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.notification','data' => ['color' => 'slate','title' => 'Throttling by Leuphana\'s servers','subtitle' => '01.07.22 13:15']] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
-<?php $component->withName('notification'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
-<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['color' => 'slate','title' => 'Throttling by Leuphana\'s servers','subtitle' => '01.07.22 13:15']); ?>
-                <p class="mb-4">
-                    Currently there are a lot of students trying to submit their refund requests.
-                </p>
-                <p class="mb-4">
-                    Unfortunately, the Leuphana mail server is starting to throttle our mails, so they can take up to 30-45 minutes to arrive. We’re in contact with Leuphana’s IT-Support, however, they have not stopped blocking our server.
-                </p>
-                <p class="mb-0 font-semibold"> 
-                    Please wait a little bit longer until the verification mail arrives. If it still has not arrived after an hour, please try again. :)
-                </p>
-             <?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
-<?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
-<?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
-<?php endif; ?>
-        <?php endif; ?>
-
         <p class="text-xl mb-4">
             <?php echo __('app.mail-check.text-1', ['email' => $email]); ?>
 

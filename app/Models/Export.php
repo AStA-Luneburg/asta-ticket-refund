@@ -13,4 +13,8 @@ class Export extends Model
     {
         return $this->hasMany(Refund::class);
     }
+
+    public function getNameAttribute() {
+        return 'Export ' . $this->id;
+    }
 }

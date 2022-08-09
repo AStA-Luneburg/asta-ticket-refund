@@ -2,6 +2,7 @@
 
 namespace App\Rules;
 
+use App\Models\User;
 use Illuminate\Contracts\Validation\Rule;
 
 class IsUniversityMail implements Rule
@@ -25,7 +26,9 @@ class IsUniversityMail implements Rule
      */
     public function passes($attribute, $email)
     {
-        if (str_ends_with($email, config('app.mail-ending')) || $email === config('app.admin-email')) {
+        // Match university mail ending (e.g. @stud.leuphana.de).
+        // Admin emails don't need this check, so they can log in.
+        if (str_ends_with($email, config('app.mail-ending')) || User::isAdminEmail($email)) {
             return true;
         }
 

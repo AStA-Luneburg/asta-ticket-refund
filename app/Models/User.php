@@ -6,20 +6,21 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Filament\Models\Contracts\FilamentUser;
 
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    public function refund() {
+    public function refund()
+    {
         return $this->hasOne(Refund::class, 'matriculation_number', 'matriculation_number');
     }
 
-    public function isAdmin() {
-        $adminEmail = config('app.admin-email');
-
-        return $this->email === $adminEmail;
+    public function isAdmin()
+    {
+        return User::isAdminEmail($this->email);
     }
 
     /**
@@ -28,6 +29,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'matriculation_number',
         'name',
         'email',
     ];
@@ -47,6 +49,15 @@ class User extends Authenticatable
      *
      * @var array<string, string>
      */
-    protected $casts = [
-    ];
+    protected $casts = [];
+
+    public function canAccessFilament(): bool
+    {
+        return $this->isAdmin();
+    }
+
+    public static function isAdminEmail($email)
+    {
+        return array_search($email, config('app.admin-emails')) !== false;
+    }
 }

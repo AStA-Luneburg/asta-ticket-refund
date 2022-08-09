@@ -9,6 +9,9 @@ class Refund extends Model
 {
     use HasFactory;
 
+    public static string $anonymized_name = 'Anonymisiert';
+    public static string $anonymized_iban = 'DEXX XXXX XXXX XXXX XXXX XX';
+
     public function user()
     {
         return $this->belongsTo(User::class, 'matriculation_number', 'matriculation_number');
@@ -17,6 +20,24 @@ class Refund extends Model
     public function export()
     {
         return $this->belongsTo(Export::class, 'export_id', 'id');
+    }
+
+    public function isExported()
+    {
+        return $this->export !== null;
+    }
+
+    public function isAnonymized()
+    {
+        return $this->iban === Refund::$anonymized_iban;
+    }
+
+    public function anonymize()
+    {
+        return $this->update([
+            'name' => Refund::$anonymized_name,
+            'iban' => Refund::$anonymized_iban,
+        ]);
     }
 
     protected $fillable = [
@@ -32,15 +53,17 @@ class Refund extends Model
      *
      * @var array<int, string>
      */
-    protected $hidden = [
-    ];
+    protected $hidden = [];
 
     /**
      * The attributes that should be cast.
      *
      * @var array<string, string>
      */
-    protected $casts = [
+    protected $casts = [];
 
-    ];
+    public function getMetaNameAttribute()
+    {
+        return 'Rückerstattung von ' . $this->user->name;
+    }
 }
