@@ -32,7 +32,7 @@ class UserResource extends Resource
                 Forms\Components\TextInput::make('matriculation_number')
                     ->label('Matrikelnummer')
                     ->unique(ignoreRecord: true)
-                    ->disabled(fn (User $record) => $record->refund !== null)
+                    ->disabled(fn (User|null $record) => $record !== null && $record->refund !== null)
                     ->required(),
                 Forms\Components\TextInput::make('name')
                     ->label('Name')
