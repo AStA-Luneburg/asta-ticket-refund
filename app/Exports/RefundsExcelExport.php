@@ -2,12 +2,12 @@
 
 namespace App\Exports;
 
-use App\Models\Refund;
+use \Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\Exportable;
-use \Illuminate\Support\Collection;
 use Maatwebsite\Excel\Excel;
+use App\Models\Refund;
 
 class RefundsExcelExport implements FromCollection, WithMapping
 {

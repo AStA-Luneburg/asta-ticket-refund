@@ -2,8 +2,6 @@
 
 namespace App\Providers;
 
-use App\Models\Refund;
-use App\Policies\RefundPolicy;
 use App\Services\RefundService;
 use Illuminate\Support\ServiceProvider;
 use Filament\Facades\Filament;

@@ -2,15 +2,15 @@
 
 namespace App\Services;
 
+use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use App\Exports\RefundsExcelExport;
 use App\Mail\SubmitConfirmationMail;
 use App\Models\Export;
 use App\Models\Refund;
 use App\Models\User;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
-use Symfony\Component\HttpFoundation\Response;
 
 class RefundManagerService
 {

@@ -2,11 +2,11 @@
 
 namespace App\Filament\Actions\Tables;
 
-use App\Models\Refund;
+use Illuminate\Database\Eloquent\Collection;
 use Filament\Notifications\Notification;
 use Filament\Support\Actions\Concerns\CanCustomizeProcess;
 use Filament\Tables\Actions\BulkAction;
-use Illuminate\Database\Eloquent\Collection;
+use App\Models\Refund;
 
 class AnonymizeBulk extends BulkAction
 {

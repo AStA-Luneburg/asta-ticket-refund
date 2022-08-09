@@ -2,16 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Facades\RefundManager;
 use Illuminate\Http\Request;
+use App\Facades\RefundManager;
 use App\Http\Requests\SaveRefundRequest;
-use App\Mail\SubmitConfirmationMail;
-use App\Models\EligibleStudent;
-use App\Models\Refund;
-use App\Rules\IBAN;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Validation\ValidationException;
 
 class MyRefundController extends Controller
 {

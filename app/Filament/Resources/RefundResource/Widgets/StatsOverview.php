@@ -2,8 +2,6 @@
 
 namespace App\Filament\Resources\RefundResource\Widgets;
 
-use App\Models\Refund;
-use App\Models\User;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Card;
 use Illuminate\Support\Facades\DB;

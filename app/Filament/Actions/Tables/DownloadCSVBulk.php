@@ -2,13 +2,11 @@
 
 namespace App\Filament\Actions\Tables;
 
-use App\Facades\RefundManager;
-use App\Models\Refund;
-use Filament\Notifications\Notification;
+use Illuminate\Database\Eloquent\Collection;
 use Filament\Support\Actions\Concerns\CanCustomizeProcess;
 use Filament\Tables\Actions\BulkAction;
-use Illuminate\Database\Eloquent\Collection;
 use Maatwebsite\Excel\Excel;
+use App\Facades\RefundManager;
 
 class DownloadCSVBulk extends BulkAction
 {

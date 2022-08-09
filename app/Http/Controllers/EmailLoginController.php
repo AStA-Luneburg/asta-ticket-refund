@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AuthenticationRequest;
-use App\Mail\VerificationMail;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use MagicLink\Actions\LoginAction;
 use MagicLink\MagicLink;
+use App\Http\Requests\AuthenticationRequest;
+use App\Mail\VerificationMail;
 
 class EmailLoginController extends Controller
 {

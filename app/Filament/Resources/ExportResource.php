@@ -3,17 +3,14 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ExportResource\Pages;
-use App\Filament\Resources\ExportResource\RelationManagers;
 use App\Filament\Resources\ExportResource\RelationManagers\RefundsRelationManager;
-use App\Models\Export;
-use App\Models\Refund;
 use Filament\Forms;
+use Filament\Tables;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
-use Filament\Tables;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Models\Export;
+use App\Models\Refund;
 
 class ExportResource extends Resource
 {

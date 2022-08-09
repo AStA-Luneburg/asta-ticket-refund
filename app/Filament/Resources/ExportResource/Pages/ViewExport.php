@@ -2,15 +2,11 @@
 
 namespace App\Filament\Resources\ExportResource\Pages;
 
-use App\Filament\Resources\ExportResource;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\ViewRecord;
-
-use App\Exports\RefundsExcelExport;
+use Maatwebsite\Excel\Excel;
+use App\Filament\Resources\ExportResource;
 use App\Facades\RefundManager;
-use App\Models\Refund;
-use Filament\Notifications\Notification;
-use \Maatwebsite\Excel\Excel;
 
 class ViewExport extends ViewRecord
 {
