@@ -18,6 +18,7 @@ Software um Anträge auf Semesterticket-Rückerstattungen aufgrund des 9€-Tick
 -   [Installation](#installation)
 -   [Anpassung an deine Universität](#anpassung-an-deine-universität)
 -   [Admin Dashboard](#admin-dashboard)
+-   [Changelog](#changelog)
 
 <br />
 
@@ -92,7 +93,7 @@ APP_DEBUG=false
 # Software Optionen
 APP_NAME="AStA Rückerstattung"
 APP_URL=https://asta-ticket-refund.test
-ADMIN_EMAIL="admin@students.example.com"
+ADMIN_EMAILS="admin@students.example.com"
 ASTA_NAME="AStA Universität Musterstadt"
 UNIVERSITY_NAME="Beispiel Universität"
 UNIVERSITY_NAME_FULL="Beispiel Universität Musterstadt"
@@ -202,6 +203,30 @@ Die Software ist auf Laravel aufgebaut und nutzt dessen best-practices. Daher ka
 
 Du kannst die Admin-UI über diese URL erreichen: `9-euro.example.com/admin`
 
-Du kannst eine valide Admin-Email mithilfe der `ADMIN_EMAIL` Variable festlegen.
+Du kannst eine oder mehrere valide Admin-Email mithilfe der `ADMIN_EMAILS` Variable festlegen. Du kannst mehrere E-Mails angeben, indem du sie mit `,` trennst.
+Zusätzlich müssen für diese E-Mails Nutzereinträge in der `users`-Tabelle existieren.
 
-Du musst dich vorher über die Studierenden-Verifizierung mit dieser Mail angemeldet haben, daher funktionieren nur E-Mails die auch in den berechtigten Nutzern ist.
+Du musst dich dann über die Studierenden-Verifizierung mit diesern Mails angemeldet haben, um auf das Dashboard zuzugreifen.
+
+```env
+ADMIN_EMAILS="email-1@example.com"
+
+# oder
+
+ADMIN_EMAILS="email-1@example.com,email-2@example.com,..."
+```
+
+## Changelog
+
+### v1.1.0 Admin Release
+
+-   Neue Admin UI
+-   Excel Export
+    -   Format passend für Import in [SEPAapp](https://sepaapp.eu)
+-   **Deprecation**: Die `ADMIN_EMAIL` Env-Variable ist deprecated, und wird in der Zukunft entfernt.
+    -   Stattdessen kann die `ADMIN_EMAILS` Variable benutzt werden
+    -   Diese unterstützt mehrere E-Mails, die mit `,` getrennt werden können
+
+### v1.0.0 Initial Release
+
+-   Der erste Release
