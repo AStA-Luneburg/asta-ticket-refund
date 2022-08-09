@@ -1,3 +1,0 @@
-<svg class="filament-button-icon w-5 h-5 mr-1 -ml-2 rtl:ml-1 rtl:-mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7a4 4 0 11-8 0 4 4 0 018 0zM9 14a6 6 0 00-6 6v1h12v-1a6 6 0 00-6-6zM21 12h-6"/>
-</svg><?php /**PATH /Users/mat/Projects/AStA/asta-ticket-refund/storage/framework/views/856c4df337ef561ba013e3e73de3e906d7d52b05.blade.php ENDPATH**/ ?>

@@ -103,15 +103,7 @@
 
         <script>
             if (localStorage.getItem('collapsedGroups') === null) {
-                localStorage.setItem('collapsedGroups', JSON.stringify(<?php
-    if (is_object($collapsedNavigationGroupLabels) || is_array($collapsedNavigationGroupLabels)) {
-        echo "JSON.parse(atob('".base64_encode(json_encode($collapsedNavigationGroupLabels))."'))";
-    } elseif (is_string($collapsedNavigationGroupLabels)) {
-        echo "'".str_replace("'", "\'", $collapsedNavigationGroupLabels)."'";
-    } else {
-        echo json_encode($collapsedNavigationGroupLabels);
-    }
-?>))
+                localStorage.setItem('collapsedGroups', JSON.stringify(<?php echo \Illuminate\Support\Js::from($collapsedNavigationGroupLabels)->toHtml() ?>))
             }
         </script>
 

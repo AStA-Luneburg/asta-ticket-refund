@@ -4,14 +4,14 @@
 
 <form wire:submit.prevent="callMountedFormComponentAction">
     <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
-<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'forms::components.modal.index','data' => ['id' => \Illuminate\Support\Str::of(static::class)->replace('\\', '\\\\') . '-form-component-action','visible' => filled($action),'width' => $action?->getModalWidth(),'displayClasses' => 'block']] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'forms::components.modal.index','data' => ['id' => \Illuminate\Support\Str::of(static::class)->replace('\\', '\\\\') . '-form-component-action','wire:key' => $action ? $this->id . '.' . $action->getComponent()->getStatePath() . '.actions.' . $action->getName() . '.modal' : null,'visible' => filled($action),'width' => $action?->getModalWidth(),'displayClasses' => 'block']] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('forms::modal'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['id' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(\Illuminate\Support\Str::of(static::class)->replace('\\', '\\\\') . '-form-component-action'),'visible' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(filled($action)),'width' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($action?->getModalWidth()),'display-classes' => 'block']); ?>
+<?php $component->withAttributes(['id' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(\Illuminate\Support\Str::of(static::class)->replace('\\', '\\\\') . '-form-component-action'),'wire:key' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($action ? $this->id . '.' . $action->getComponent()->getStatePath() . '.actions.' . $action->getName() . '.modal' : null),'visible' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(filled($action)),'width' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($action?->getModalWidth()),'display-classes' => 'block']); ?>
         <?php if($action): ?>
             <?php if($action->isModalCentered()): ?>
                  <?php $__env->slot('heading', null, []); ?> 

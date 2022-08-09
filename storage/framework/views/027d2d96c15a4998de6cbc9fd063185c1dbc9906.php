@@ -1,1 +1,0 @@
-<?php echo e($getChildComponentContainer()); ?><?php /**PATH /Users/mat/Projects/AStA/asta-ticket-refund/vendor/filament/forms/src/../resources/views/components/group.blade.php ENDPATH**/ ?>

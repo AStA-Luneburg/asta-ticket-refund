@@ -260,7 +260,7 @@
         /* -------------------------------------
           RESPONSIVE AND MOBILE FRIENDLY STYLES
       ------------------------------------- */
-        @media  only screen and (max-width: 620px) {
+        @media only screen and (max-width: 620px) {
             table.body h1 {
                 font-size: 28px !important;
                 margin-bottom: 10px !important;
@@ -313,7 +313,7 @@
         /* -------------------------------------
           PRESERVE THESE STYLES IN THE HEAD
       ------------------------------------- */
-        @media  all {
+        @media all {
             .ExternalClass {
                 width: 100%;
             }

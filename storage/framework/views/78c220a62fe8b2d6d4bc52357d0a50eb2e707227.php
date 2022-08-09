@@ -232,15 +232,7 @@
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
         <div
-            x-show="hasHeader = (<?php
-    if (is_object($renderHeader = ($header || $heading || ($headerActions && (! $isReordering)) || $isReorderable || $isSearchVisible || $hasFilters || $isColumnToggleFormVisible)) || is_array($renderHeader = ($header || $heading || ($headerActions && (! $isReordering)) || $isReorderable || $isSearchVisible || $hasFilters || $isColumnToggleFormVisible))) {
-        echo "JSON.parse(atob('".base64_encode(json_encode($renderHeader = ($header || $heading || ($headerActions && (! $isReordering)) || $isReorderable || $isSearchVisible || $hasFilters || $isColumnToggleFormVisible)))."'))";
-    } elseif (is_string($renderHeader = ($header || $heading || ($headerActions && (! $isReordering)) || $isReorderable || $isSearchVisible || $hasFilters || $isColumnToggleFormVisible))) {
-        echo "'".str_replace("'", "\'", $renderHeader = ($header || $heading || ($headerActions && (! $isReordering)) || $isReorderable || $isSearchVisible || $hasFilters || $isColumnToggleFormVisible))."'";
-    } else {
-        echo json_encode($renderHeader = ($header || $heading || ($headerActions && (! $isReordering)) || $isReorderable || $isSearchVisible || $hasFilters || $isColumnToggleFormVisible));
-    }
-?> || selectedRecords.length)"
+            x-show="hasHeader = (<?php echo \Illuminate\Support\Js::from($renderHeader = ($header || $heading || ($headerActions && (! $isReordering)) || $isReorderable || $isSearchVisible || $hasFilters || $isColumnToggleFormVisible))->toHtml() ?> || selectedRecords.length)"
             <?php echo ! $renderHeader ? 'x-cloak' : null; ?>
 
         >
@@ -331,28 +323,12 @@
             <?php endif; ?>
 
             <div
-                x-show="<?php
-    if (is_object($shouldRenderHeaderDiv = ($isReorderable || $isSearchVisible || $hasFiltersPopover || $isColumnToggleFormVisible)) || is_array($shouldRenderHeaderDiv = ($isReorderable || $isSearchVisible || $hasFiltersPopover || $isColumnToggleFormVisible))) {
-        echo "JSON.parse(atob('".base64_encode(json_encode($shouldRenderHeaderDiv = ($isReorderable || $isSearchVisible || $hasFiltersPopover || $isColumnToggleFormVisible)))."'))";
-    } elseif (is_string($shouldRenderHeaderDiv = ($isReorderable || $isSearchVisible || $hasFiltersPopover || $isColumnToggleFormVisible))) {
-        echo "'".str_replace("'", "\'", $shouldRenderHeaderDiv = ($isReorderable || $isSearchVisible || $hasFiltersPopover || $isColumnToggleFormVisible))."'";
-    } else {
-        echo json_encode($shouldRenderHeaderDiv = ($isReorderable || $isSearchVisible || $hasFiltersPopover || $isColumnToggleFormVisible));
-    }
-?> || selectedRecords.length"
+                x-show="<?php echo \Illuminate\Support\Js::from($shouldRenderHeaderDiv = ($isReorderable || $isSearchVisible || $hasFiltersPopover || $isColumnToggleFormVisible))->toHtml() ?> || selectedRecords.length"
                 <?php echo ! $shouldRenderHeaderDiv ? 'x-cloak' : null; ?>
 
                 class="flex items-center justify-between p-2 h-14"
                 x-bind:class="{
-                    'gap-2': <?php
-    if (is_object($isReorderable) || is_array($isReorderable)) {
-        echo "JSON.parse(atob('".base64_encode(json_encode($isReorderable))."'))";
-    } elseif (is_string($isReorderable)) {
-        echo "'".str_replace("'", "\'", $isReorderable)."'";
-    } else {
-        echo json_encode($isReorderable);
-    }
-?> || selectedRecords.length,
+                    'gap-2': <?php echo \Illuminate\Support\Js::from($isReorderable)->toHtml() ?> || selectedRecords.length,
                 }"
             >
                 <div class="flex items-center gap-2">
@@ -746,7 +722,10 @@
             <?php endif; ?>
         </div>
 
-        <?php if($records instanceof \Illuminate\Contracts\Pagination\Paginator): ?>
+        <?php if(
+            $records instanceof \Illuminate\Contracts\Pagination\Paginator &&
+            ((! $records instanceof \Illuminate\Contracts\Pagination\LengthAwarePaginator) || $records->total())
+        ): ?>
             <div class="<?php echo \Illuminate\Support\Arr::toCssClasses([
                 'p-2 border-t',
                 'dark:border-gray-700' => config('tables.dark_mode'),
@@ -781,14 +760,14 @@
         ?>
 
         <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
-<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'tables::components.modal.index','data' => ['id' => \Illuminate\Support\Str::of(static::class)->replace('\\', '\\\\') . '-table-action','visible' => filled($action),'width' => $action?->getModalWidth(),'displayClasses' => 'block']] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'tables::components.modal.index','data' => ['id' => \Illuminate\Support\Str::of(static::class)->replace('\\', '\\\\') . '-table-action','wire:key' => $action ? $this->id . '.table' . ($getMountedActionRecordKey() ? '.records.' . $getMountedActionRecordKey() : null) . '.actions.' . $action->getName() . '.modal' : null,'visible' => filled($action),'width' => $action?->getModalWidth(),'displayClasses' => 'block']] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('tables::modal'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['id' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(\Illuminate\Support\Str::of(static::class)->replace('\\', '\\\\') . '-table-action'),'visible' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(filled($action)),'width' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($action?->getModalWidth()),'display-classes' => 'block']); ?>
+<?php $component->withAttributes(['id' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(\Illuminate\Support\Str::of(static::class)->replace('\\', '\\\\') . '-table-action'),'wire:key' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($action ? $this->id . '.table' . ($getMountedActionRecordKey() ? '.records.' . $getMountedActionRecordKey() : null) . '.actions.' . $action->getName() . '.modal' : null),'visible' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(filled($action)),'width' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($action?->getModalWidth()),'display-classes' => 'block']); ?>
             <?php if($action): ?>
                 <?php if($action->isModalCentered()): ?>
                      <?php $__env->slot('heading', null, []); ?> 
@@ -870,14 +849,14 @@
         ?>
 
         <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
-<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'tables::components.modal.index','data' => ['id' => \Illuminate\Support\Str::of(static::class)->replace('\\', '\\\\') . '-table-bulk-action','visible' => filled($action),'width' => $action?->getModalWidth(),'displayClasses' => 'block']] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'tables::components.modal.index','data' => ['id' => \Illuminate\Support\Str::of(static::class)->replace('\\', '\\\\') . '-table-bulk-action','wire:key' => $action ? $this->id . '.table.bulk-actions.' . $action->getName() . '.modal' : null,'visible' => filled($action),'width' => $action?->getModalWidth(),'displayClasses' => 'block']] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('tables::modal'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['id' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(\Illuminate\Support\Str::of(static::class)->replace('\\', '\\\\') . '-table-bulk-action'),'visible' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(filled($action)),'width' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($action?->getModalWidth()),'display-classes' => 'block']); ?>
+<?php $component->withAttributes(['id' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(\Illuminate\Support\Str::of(static::class)->replace('\\', '\\\\') . '-table-bulk-action'),'wire:key' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($action ? $this->id . '.table.bulk-actions.' . $action->getName() . '.modal' : null),'visible' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(filled($action)),'width' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($action?->getModalWidth()),'display-classes' => 'block']); ?>
             <?php if($action): ?>
                 <?php if($action->isModalCentered()): ?>
                      <?php $__env->slot('heading', null, []); ?> 
