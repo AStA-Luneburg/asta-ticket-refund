@@ -29,6 +29,8 @@ return [
     'faq-url' => env('FAQ_URL', 'https://example.com/faq'),
     'footer-address' => env('FOOTER_ADDRESS', 'Gebäude A1.001<br>Musterstraße 12345<br>Musterstadt'),
 
+    'export-limit' => intval(env('EXPORT_LIMIT', '999')),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

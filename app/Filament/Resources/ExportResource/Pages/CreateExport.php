@@ -18,7 +18,10 @@ class CreateExport extends CreateRecord
         return DB::transaction(function () {
             $export = Export::create();
 
-            Refund::where('export_id', null)->limit(999)->update(['export_id' => $export->id]);
+            Refund::where('export_id', null)
+                ->orderBy('created_at')
+                ->limit(config('app.export-limit'))
+                ->update(['export_id' => $export->id]);
 
             return $export;
         });

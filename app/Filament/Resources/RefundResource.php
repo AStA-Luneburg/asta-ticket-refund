@@ -2,8 +2,8 @@
 
 namespace App\Filament\Resources;
 
+use App\Exports\RefundsExcelExport;
 use App\Filament\Resources\RefundResource\Pages;
-use App\Models\Export;
 use App\Models\Refund;
 use App\Models\User;
 use Filament\Forms;
@@ -12,14 +12,15 @@ use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 use App\Rules\IBAN;
 use Filament\Pages\Page;
-use Filament\Resources\Pages\CreateRecord;
 use Filament\Resources\Pages\EditRecord;
+use Filament\Tables\Actions\BulkAction;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\SelectFilter;
+use Illuminate\Support\Collection;
+use Maatwebsite\Excel\Excel;
 
 class RefundResource extends Resource
 {
@@ -97,7 +98,26 @@ class RefundResource extends Resource
                     // ->searchable()
             ])
             ->actions([])
-            ->bulkActions([]);
+            ->bulkActions([
+                BulkAction::make('excel-download')
+                    ->label('Excel herunterladen')
+                    ->color('primary')
+                    ->action(function (Collection $records) {
+                        $date = now()->format('Y-m-d_H-m-s');
+
+                        return RefundsExcelExport::withCollection($records)
+                            ->download("Refunds_{$date}.xlsx", Excel::XLSX);
+                    }),
+                BulkAction::make('csv-download')
+                    ->label('CSV herunterladen')
+                    ->color('primary')
+                    ->action(function (Collection $records) {
+                        $date = now()->format('Y-m-d');
+
+                        return RefundsExcelExport::withCollection($records)
+                            ->download("Refunds_{$date}.csv", Excel::CSV);
+                    })
+            ]);
     }
 
     public static function getRelations(): array
@@ -120,5 +140,12 @@ class RefundResource extends Resource
     protected function shouldPersistTableFiltersInSession(): bool
     {
         return false;
+    }
+
+    protected function downloadSelected(Collection $refunds, string $type)
+    {
+        $extension = strtolower($type);
+
+        return ;
     }
 }

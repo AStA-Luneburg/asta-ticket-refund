@@ -43,8 +43,9 @@ class RefundsRelationManager extends RelationManager
             ])
             ->filters([])
             ->actions([
-                Tables\Actions\ViewAction::make()->url(fn ($record): string => '/admin/refunds/' . $record->id),
-                ])
+                Tables\Actions\ViewAction::make()
+                    ->url(fn ($record): string => '/admin/refunds/' . $record->id),
+            ])
             ->headerActions([]);
     }
 }

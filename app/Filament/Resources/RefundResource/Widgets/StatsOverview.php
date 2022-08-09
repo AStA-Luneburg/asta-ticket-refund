@@ -13,7 +13,7 @@ class StatsOverview extends BaseWidget
     protected function getCards(): array
     {
         $total = DB::table('refunds')->count();
-
+        $total_not_exported = DB::table('refunds')->where('export_id', null)->count();
 
         $hour_ago = new \DateTime('-1 hour', new \DateTimeZone("UTC"));
         $hour_ago = $hour_ago->format('Y-m-d H:i:s');
@@ -37,6 +37,8 @@ class StatsOverview extends BaseWidget
 
         return [
             Card::make('Gesamtanzahl', $total)
+                ->description('Anträge'),
+            Card::make('Nicht exportiert', $total_not_exported)
                 ->description('Anträge'),
             Card::make('Anträge in letzter Stunde', $count_last_hour)
                 ->description('Anträge'),

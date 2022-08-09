@@ -26,7 +26,10 @@ class ExportResource extends Resource
 
     public static function form(Form $form): Form
     {
-        $count = Refund::where('export_id', null)->count();
+        $count = min(
+            Refund::where('export_id', null)->count(),
+            config('app.export-limit')
+        );
 
         return $form
             ->schema([
@@ -49,8 +52,7 @@ class ExportResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('id')
-                    ->label('ID')
-                    ->description('Datenexport-ID'),
+                    ->label('ID'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Erstellt am')
                     ->dateTime(),

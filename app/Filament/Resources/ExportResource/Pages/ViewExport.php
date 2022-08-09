@@ -16,7 +16,7 @@ class ViewExport extends ViewRecord
     protected function download($type) {
         $extension = strtolower($type);
 
-        return (new RefundsExcelExport($this->record->id))
+        return RefundsExcelExport::withExportID($this->record->id)
             ->download("Export-{$this->record->id}_{$this->record->created_at->format('Y-m-d_H-m-s')}.{$extension}", $type);
     }
 
