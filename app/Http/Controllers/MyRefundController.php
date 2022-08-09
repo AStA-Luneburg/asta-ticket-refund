@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Facades\RefundManager;
 use Illuminate\Http\Request;
 use App\Http\Requests\SaveRefundRequest;
 use App\Mail\SubmitConfirmationMail;
@@ -26,7 +27,9 @@ class MyRefundController extends Controller
         $success = $request->session()->pull('success', null);
 
         return $user
-            ? view('my-refund', [ 'user' => $user, 'refund' => $refund, 'success' => $success ])
+            ? ($user->isAdmin()
+                ? redirect('admin')
+                : view('my-refund', ['user' => $user, 'refund' => $refund, 'success' => $success]))
             : redirect('welcome');
     }
 
@@ -36,24 +39,10 @@ class MyRefundController extends Controller
     public function store(SaveRefundRequest $request)
     {
         $validated = $request->validate();
-
         $user = $request->user();
-        $isFirstSave = $user->refund === null;
 
-        Refund::updateOrCreate(
-            ['matriculation_number' => $user->matriculation_number],
-            [
-                'name' => $validated['name'],
-                'iban' => $validated['iban'],
-                'updated_at' => now(), // We set updated_at manually and update it even when values haven't changed
-            ]
-        );
-
-        if ($isFirstSave) {
-            Mail::to($user->email)->send(new SubmitConfirmationMail());
-        }
-
-        session()->flash('success', $isFirstSave ? 'created' : 'saved');
+        $wasCreated = RefundManager::storeRefund($user, $validated['name'], $validated['iban']);;
+        session()->flash('success', $wasCreated ? 'created' : 'saved');
 
         return redirect(route('my-refund'));
     }

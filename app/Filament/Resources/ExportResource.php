@@ -20,7 +20,7 @@ class ExportResource extends Resource
     protected static ?string $model = Export::class;
     protected static ?string $recordTitleAttribute = 'name';
     protected static ?string $modelLabel = 'Datenexport';
-    protected static ?string $pluralModelLabel = 'Datenexports';
+    protected static ?string $pluralModelLabel = 'Datenexporte';
 
     protected static ?string $navigationIcon = 'heroicon-o-cloud-download';
 
@@ -34,7 +34,7 @@ class ExportResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('count')
-                    ->label('Anzahl an Anträgen')
+                    ->label('Maximale Anzahl an Anträgen')
                     ->default($count)
                     ->visibleOn('create')
                     ->dehydrated(true)
@@ -85,5 +85,10 @@ class ExportResource extends Resource
             'create' => Pages\CreateExport::route('/create'),
             'view' => Pages\ViewExport::route('/{record}'),
         ];
+    }
+
+    public static function getGloballySearchableAttributes(): array
+    {
+        return [];
     }
 }

@@ -30,9 +30,9 @@
 <?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
 <?php endif; ?>
 
-    <h1 class="text-lg opacity-90 text-left">
+    <h1 class="text-md opacity-90 text-left">
         <div class="font-bold ">9€-Ticket</div>
-        <div class="-mt-2 ">Administration</div>
+        <div class="-mt-1 font-semibold opacity-70">Administration</div>
     </h1>
 </figure>
 <?php /**PATH /Users/mat/Projects/AStA/asta-ticket-refund/resources/views/vendor/filament/components/brand.blade.php ENDPATH**/ ?>

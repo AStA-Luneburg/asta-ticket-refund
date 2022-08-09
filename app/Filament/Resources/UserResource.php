@@ -32,6 +32,7 @@ class UserResource extends Resource
                 Forms\Components\TextInput::make('matriculation_number')
                     ->label('Matrikelnummer')
                     ->unique(ignoreRecord: true)
+                    ->disabled(fn (User $record) => $record->refund !== null)
                     ->required(),
                 Forms\Components\TextInput::make('name')
                     ->label('Name')
@@ -80,5 +81,10 @@ class UserResource extends Resource
             'create' => Pages\CreateUser::route('/create'),
             'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
+    }
+
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['email', 'name', 'matriculation_number'];
     }
 }

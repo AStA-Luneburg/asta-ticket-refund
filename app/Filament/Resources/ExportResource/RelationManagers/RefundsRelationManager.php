@@ -2,15 +2,16 @@
 
 namespace App\Filament\Resources\ExportResource\RelationManagers;
 
+use App\Filament\Actions\Tables\AnonymizeBulk;
+use App\Filament\Actions\Tables\DownloadCSVBulk;
+use App\Filament\Actions\Tables\DownloadExcelBulk;
 use App\Models\Refund;
 use App\Models\User;
-use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class RefundsRelationManager extends RelationManager
 {
@@ -46,6 +47,10 @@ class RefundsRelationManager extends RelationManager
                 Tables\Actions\ViewAction::make()
                     ->url(fn ($record): string => '/admin/refunds/' . $record->id),
             ])
-            ->headerActions([]);
+            ->bulkActions([
+                DownloadExcelBulk::make(),
+                DownloadCSVBulk::make(),
+                AnonymizeBulk::make()
+            ]);
     }
 }

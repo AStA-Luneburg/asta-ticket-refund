@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\UserResource\RelationManagers;
 
+use App\Filament\Resources\ExportResource;
+use App\Models\Export;
 use App\Models\Refund;
 use App\Models\User;
 use Filament\Forms;
@@ -15,8 +17,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class RefundRelationManager extends RelationManager
 {
     protected static string $relationship = 'refund';
-    protected static ?string $modelLabel = 'Student*in';
-    protected static ?string $pluralModelLabel = 'Studierende*r';
+
+    protected static ?string $pluralModelLabel = 'Rückerstattung';
 
     protected static ?string $recordTitleAttribute = 'matriculation_number';
 
@@ -33,6 +35,7 @@ class RefundRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('iban')->label('IBAN'),
                 Tables\Columns\BadgeColumn::make('export.name')
                     ->label('Datenexport')
+                    ->url(fn (Refund $record): string => $record->export ? ExportResource::getUrl('view', ['record' => $record->export]) : false)
                     ->default('Nicht exportiert')
                     ->colors([
                         'success',

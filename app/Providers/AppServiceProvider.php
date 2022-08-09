@@ -4,20 +4,20 @@ namespace App\Providers;
 
 use App\Models\Refund;
 use App\Policies\RefundPolicy;
+use App\Services\RefundService;
 use Illuminate\Support\ServiceProvider;
 use Filament\Facades\Filament;
 
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * All of the container singletons that should be registered.
      *
-     * @return void
+     * @var array
      */
-    public function register()
-    {
-        //
-    }
+    public $singletons = [
+        RefundService::class => RefundService::class,
+    ];
 
     /**
      * Bootstrap any application services.

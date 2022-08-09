@@ -16,7 +16,12 @@ return [
     */
 
     'name' => env('APP_NAME', 'AStA Rückerstattung'),
-    'admin-email' => env('ADMIN_EMAIL', 'admin@example.com'),
+    'admin-emails' => array_merge(
+        // @DEPRECATED: use ADMIN_EMAILS instead
+        explode(',', env('ADMIN_EMAIL', '')),
+
+        explode(',', env('ADMIN_EMAILS', ''))
+    ),
     'asta-name' => env('ASTA_NAME', 'AStA Universität Musterstadt'),
     'university' => env('UNIVERSITY_NAME', 'Beispiel Universität'),
     'university-full' => env('UNIVERSITY_NAME_FULL', 'Beispiel Universität Musterstadt'),
@@ -109,7 +114,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'de',
+    'fallback_locale' => 'en',
 
     /*
     |--------------------------------------------------------------------------
@@ -224,6 +229,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+        'RefundManager' => App\Facades\RefundManager::class,
     ])->toArray(),
 
 ];

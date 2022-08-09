@@ -4,8 +4,8 @@
     <x-application-logo class="h-full hidden dark:block fill-current">
     </x-application-logo>
 
-    <h1 class="text-lg opacity-90 text-left">
+    <h1 class="text-md opacity-90 text-left">
         <div class="font-bold ">9€-Ticket</div>
-        <div class="-mt-2 ">Administration</div>
+        <div class="-mt-1 font-semibold opacity-70">Administration</div>
     </h1>
 </figure>

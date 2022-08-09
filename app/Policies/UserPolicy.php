@@ -52,7 +52,7 @@ class UserPolicy
      */
     public function update(User $user, User $model)
     {
-        return $user->isAdmin();
+        return $user->isAdmin() && !$model->isAdmin();
     }
 
     /**
@@ -64,6 +64,6 @@ class UserPolicy
      */
     public function delete(User $user, User $model)
     {
-        return $user->isAdmin() && $model->refund === null;
+        return $user->isAdmin() && $model->refund === null && !$model->isAdmin();
     }
 }

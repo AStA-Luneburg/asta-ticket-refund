@@ -2,8 +2,11 @@
 
 namespace App\Filament\Resources;
 
-use App\Exports\RefundsExcelExport;
 use App\Filament\Resources\RefundResource\Pages;
+use App\Filament\Resources\RefundResource\RelationManagers\ExportRelationManager;
+use App\Filament\Actions\Tables\AnonymizeBulk;
+use App\Filament\Actions\Tables\DownloadCSVBulk;
+use App\Filament\Actions\Tables\DownloadExcelBulk;
 use App\Models\Refund;
 use App\Models\User;
 use Filament\Forms;
@@ -12,15 +15,11 @@ use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
-
 use App\Rules\IBAN;
 use Filament\Pages\Page;
-use Filament\Resources\Pages\EditRecord;
-use Filament\Tables\Actions\BulkAction;
+use Filament\Resources\Pages\CreateRecord;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\SelectFilter;
-use Illuminate\Support\Collection;
-use Maatwebsite\Excel\Excel;
 
 class RefundResource extends Resource
 {
@@ -40,9 +39,13 @@ class RefundResource extends Resource
                     ->relationship('user', 'name_with_matriculation')
                     ->placeholder('Name oder Matrikelnummer')
                     ->unique(ignoreRecord: true)
-                    ->disabled(fn (Page $livewire) => $livewire instanceof EditRecord)
+                    ->disabled(fn (Page $livewire) => !($livewire instanceof CreateRecord))
                     ->searchable()
                     ->required(),
+                Forms\Components\DateTimePicker::make('created_at')
+                    ->label('Erstellt am')
+                    ->hiddenOn('create')
+                    ->disabled(true),
                 Forms\Components\TextInput::make('export_id')
                     ->label('Datenexport')
                     ->placeholder('Nicht exportiert')
@@ -88,42 +91,27 @@ class RefundResource extends Resource
                     ])
             ])
             ->filters([
+                SelectFilter::make('export')
+                    ->label('Datenexport')
+                    ->relationship('export', 'id'),
                 Filter::make('not_exported')
                     ->label('Nicht exportiert')
                     ->query(fn (Builder $query): Builder => $query->where('export_id', null))
-                    ->toggle(),
-                SelectFilter::make('export')
-                    ->label('Datenexport')
-                    ->relationship('export', 'id')
-                    // ->searchable()
+                    ->toggle()
+                // ->searchable()
             ])
             ->actions([])
             ->bulkActions([
-                BulkAction::make('excel-download')
-                    ->label('Excel herunterladen')
-                    ->color('primary')
-                    ->action(function (Collection $records) {
-                        $date = now()->format('Y-m-d_H-m-s');
-
-                        return RefundsExcelExport::withCollection($records)
-                            ->download("Refunds_{$date}.xlsx", Excel::XLSX);
-                    }),
-                BulkAction::make('csv-download')
-                    ->label('CSV herunterladen')
-                    ->color('primary')
-                    ->action(function (Collection $records) {
-                        $date = now()->format('Y-m-d');
-
-                        return RefundsExcelExport::withCollection($records)
-                            ->download("Refunds_{$date}.csv", Excel::CSV);
-                    })
+                DownloadExcelBulk::make(),
+                DownloadCSVBulk::make(),
+                AnonymizeBulk::make()
             ]);
     }
 
     public static function getRelations(): array
     {
         return [
-            // RelationManagers\UserRelationManager::class,
+            ExportRelationManager::class
         ];
     }
 
@@ -137,15 +125,8 @@ class RefundResource extends Resource
         ];
     }
 
-    protected function shouldPersistTableFiltersInSession(): bool
+    public static function getGloballySearchableAttributes(): array
     {
-        return false;
-    }
-
-    protected function downloadSelected(Collection $refunds, string $type)
-    {
-        $extension = strtolower($type);
-
-        return ;
+        return ['name', 'iban', 'user.name', 'user.email', 'matriculation_number'];
     }
 }

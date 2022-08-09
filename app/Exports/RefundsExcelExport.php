@@ -7,10 +7,14 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\Exportable;
 use \Illuminate\Support\Collection;
+use Maatwebsite\Excel\Excel;
 
 class RefundsExcelExport implements FromCollection, WithMapping
 {
     use Exportable;
+
+    public static string $XLSX = Excel::XLSX;
+    public static string $CSV = Excel::CSV;
 
     protected int $export_id;
     protected Collection $refunds;
