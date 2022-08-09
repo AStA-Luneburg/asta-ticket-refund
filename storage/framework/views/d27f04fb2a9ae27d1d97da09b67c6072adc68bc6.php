@@ -10,15 +10,15 @@
 	<?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount(ShuvroRoy\FilamentSpatieLaravelBackup\Components\BackupDestinationStatusListRecords::class)->html();
-} elseif ($_instance->childHasBeenRendered('8RQsaSW')) {
-    $componentId = $_instance->getRenderedChildComponentId('8RQsaSW');
-    $componentTag = $_instance->getRenderedChildComponentTagName('8RQsaSW');
+} elseif ($_instance->childHasBeenRendered('jdSyAD4')) {
+    $componentId = $_instance->getRenderedChildComponentId('jdSyAD4');
+    $componentTag = $_instance->getRenderedChildComponentTagName('jdSyAD4');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('8RQsaSW');
+    $_instance->preserveRenderedChild('jdSyAD4');
 } else {
     $response = \Livewire\Livewire::mount(ShuvroRoy\FilamentSpatieLaravelBackup\Components\BackupDestinationStatusListRecords::class);
     $html = $response->html();
-    $_instance->logRenderedChild('8RQsaSW', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('jdSyAD4', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -26,15 +26,15 @@ echo $html;
 		<?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount(ShuvroRoy\FilamentSpatieLaravelBackup\Components\BackupDestinationListRecords::class)->html();
-} elseif ($_instance->childHasBeenRendered('sCazWUy')) {
-    $componentId = $_instance->getRenderedChildComponentId('sCazWUy');
-    $componentTag = $_instance->getRenderedChildComponentTagName('sCazWUy');
+} elseif ($_instance->childHasBeenRendered('z7476Wf')) {
+    $componentId = $_instance->getRenderedChildComponentId('z7476Wf');
+    $componentTag = $_instance->getRenderedChildComponentTagName('z7476Wf');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('sCazWUy');
+    $_instance->preserveRenderedChild('z7476Wf');
 } else {
     $response = \Livewire\Livewire::mount(ShuvroRoy\FilamentSpatieLaravelBackup\Components\BackupDestinationListRecords::class);
     $html = $response->html();
-    $_instance->logRenderedChild('sCazWUy', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('z7476Wf', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>

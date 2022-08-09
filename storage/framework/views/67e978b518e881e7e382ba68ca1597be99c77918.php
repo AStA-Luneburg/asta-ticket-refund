@@ -1,1 +1,0 @@
-<?php /**PATH /Users/mat/Projects/AStA/asta-ticket-refund/vendor/filament/filament/src/../resources/views/components/global-search/start.blade.php ENDPATH**/ ?>
